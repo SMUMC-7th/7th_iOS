@@ -83,7 +83,7 @@ class Coordinate {
 let PointA : Coordinate = Coordinate(x: 10, y: 20)
 
 PointA.printCoordinate()
-PointA.oposite = PointA
+PointA.oposite = PointA // Set 사용 
 PointA.printCoordinate()
 PointA.xIntercept = PointA
 PointA.printCoordinate()
