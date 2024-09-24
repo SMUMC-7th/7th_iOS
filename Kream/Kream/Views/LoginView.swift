@@ -23,7 +23,7 @@ class LoginView: UIView {
         let textField: UITextField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "예)kream@kream.co.kr"
-        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.borderColor = UIColor(named: "LoginTextField")?.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 15
         textField.font = .systemFont(ofSize: 15)
@@ -49,7 +49,7 @@ class LoginView: UIView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.widthAnchor.constraint(equalToConstant: 303).isActive = true
         textField.placeholder = "비밀번호를 입력해주세요."
-        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.borderColor = UIColor(named: "LoginTextField")?.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 15
         textField.font = .systemFont(ofSize: 15)
@@ -94,7 +94,7 @@ class LoginView: UIView {
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -100, bottom: 0, right: 0)
         
         
-        button.layer.borderColor = UIColor(named: "LoginButtonGray")?.cgColor
+        button.layer.borderColor = UIColor(named: "SocialLogin")?.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 15
         
@@ -117,7 +117,7 @@ class LoginView: UIView {
         button.contentHorizontalAlignment = .leading
         button.contentVerticalAlignment = .center
         
-        button.layer.borderColor = UIColor(named: "LoginButtonGray")?.cgColor
+        button.layer.borderColor = UIColor(named: "SocialLogin")?.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 15
         
