@@ -15,19 +15,21 @@ class LoginView: UIView {
         let label: UILabel = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "이메일 주소"
+        label.font = .systemFont(ofSize: 15)
         return label
     }()
     
-    private lazy var emailTextField: UITextField = {
+    public lazy var emailTextField: UITextField = {
         let textField: UITextField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "예)kream@kream.co.kr"
         textField.layer.borderColor = UIColor.gray.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 15
+        textField.font = .systemFont(ofSize: 15)
         
         // leftView에 패딩 추가
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: textField.frame.height))
         textField.leftView = paddingView
         textField.leftViewMode = .always
         
@@ -38,11 +40,11 @@ class LoginView: UIView {
         let label: UILabel = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "비밀번호"
-        label.widthAnchor.constraint(equalToConstant: 303).isActive = true
+        label.font = .systemFont(ofSize: 15)
         return label
     }()
     
-    private lazy var pwdTextField: UITextField = {
+    public lazy var pwdTextField: UITextField = {
         let textField: UITextField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.widthAnchor.constraint(equalToConstant: 303).isActive = true
@@ -50,20 +52,21 @@ class LoginView: UIView {
         textField.layer.borderColor = UIColor.gray.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 15
+        textField.font = .systemFont(ofSize: 15)
         
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
+        let paddingView = UIView(frame: CGRect(x: 0, y: -20, width: 20, height: textField.frame.height))
         textField.leftView = paddingView
         textField.leftViewMode = .always
         
         return textField
     }()
     
-    private lazy var loginButton: UIButton = {
+    public lazy var loginButton: UIButton = {
         let button: UIButton = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("로그인", for: .normal)
         button.backgroundColor = UIColor(named: "LoginButtonGray")
-        button.layer.cornerRadius = 5
+        button.layer.cornerRadius = 8
         return button
     }()
     
@@ -72,11 +75,11 @@ class LoginView: UIView {
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = 10
+        stackView.spacing = 15
         return stackView
     }()
     
-    private lazy var kakaoLoginButton: UIButton = {
+    public lazy var kakaoLoginButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("카카오로 로그인", for: .normal)
@@ -104,10 +107,12 @@ class LoginView: UIView {
         button.setTitle("Apple로 로그인", for: .normal)
         button.setTitleColor(.black, for: .normal)
         
-        button.setImage(UIImage(systemName: "apple.logo"), for: .normal)
-        
+        let config = UIImage.SymbolConfiguration(pointSize: 24, weight: .regular, scale: .default)
+        let appleLogo = UIImage(systemName: "apple.logo", withConfiguration: config)
+        button.setImage(appleLogo, for: .normal)
         button.imageView?.tintColor = .black
-        button.imageView?.contentMode = .scaleAspectFit
+        
+        button.imageView?.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
         
         button.contentHorizontalAlignment = .leading
         button.contentVerticalAlignment = .center
@@ -129,7 +134,7 @@ class LoginView: UIView {
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = 10
+        stackView.spacing = 22
         return stackView
     }()
     
@@ -154,28 +159,31 @@ class LoginView: UIView {
         appleLoginButton.addSubview(appleLoginButton.imageView!)
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 180),
+            imageView.topAnchor.constraint(lessThanOrEqualTo: self.topAnchor, constant: 100),
+            //imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 187),
+            
             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             imageView.heightAnchor.constraint(equalToConstant: 75),
             
-            customerLoginStack.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 50),
+            customerLoginStack.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 87),
             customerLoginStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 45),
             customerLoginStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -45),
             
             emailTextField.leadingAnchor.constraint(equalTo: customerLoginStack.leadingAnchor),
             emailTextField.trailingAnchor.constraint(equalTo: customerLoginStack.trailingAnchor),
-            emailTextField.heightAnchor.constraint(equalToConstant: 40),
+            emailTextField.heightAnchor.constraint(equalToConstant: 34),
             
             pwdTextField.leadingAnchor.constraint(equalTo: customerLoginStack.leadingAnchor),
             pwdTextField.trailingAnchor.constraint(equalTo: customerLoginStack.trailingAnchor),
-            pwdTextField.heightAnchor.constraint(equalToConstant: 40),
+            pwdTextField.heightAnchor.constraint(equalToConstant: 34),
             
             loginButton.leadingAnchor.constraint(equalTo: customerLoginStack.leadingAnchor),
             loginButton.trailingAnchor.constraint(equalTo: customerLoginStack.trailingAnchor),
-            loginButton.heightAnchor.constraint(equalToConstant: 40),
+            loginButton.heightAnchor.constraint(equalToConstant: 38),
             
-            socialLoginStack.topAnchor.constraint(equalTo: customerLoginStack.bottomAnchor, constant: 50),
+            socialLoginStack.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -50),
+            socialLoginStack.topAnchor.constraint(lessThanOrEqualTo: customerLoginStack.bottomAnchor, constant: 87),
             socialLoginStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 45),
             socialLoginStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -45),
             
@@ -195,4 +203,10 @@ class LoginView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+import SwiftUI
+#Preview
+{
+    LoginViewController()
 }
