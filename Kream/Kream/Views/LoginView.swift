@@ -159,7 +159,7 @@ class LoginView: UIView {
         appleLoginButton.addSubview(appleLoginButton.imageView!)
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(lessThanOrEqualTo: self.topAnchor, constant: 100),
+            imageView.topAnchor.constraint(lessThanOrEqualTo: self.topAnchor, constant: 140),
             //imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 187),
             
             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
