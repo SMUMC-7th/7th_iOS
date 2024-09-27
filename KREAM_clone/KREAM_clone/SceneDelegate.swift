@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = LoginViewController() // 원하는 뷰 컨트롤러 파일의 이름
+        window?.rootViewController = BaseViewController() // 원하는 뷰 컨트롤러 파일의 이름
         window?.makeKeyAndVisible()
     }
 

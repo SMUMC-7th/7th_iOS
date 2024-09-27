@@ -169,6 +169,7 @@ class LoginView: UIView {
         self.addSubview(appleLoginButton)
         
         NSLayoutConstraint.activate([
+            
             kreamlogo.topAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.topAnchor, constant: 126),
             kreamlogo.leadingAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 53),
             kreamlogo.widthAnchor.constraint(lessThanOrEqualToConstant: 287),
@@ -208,7 +209,7 @@ class LoginView: UIView {
             appleLoginButton.leadingAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 45),
             appleLoginButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -45),
             appleLoginButton.widthAnchor.constraint(equalToConstant: 298),
-            appleLoginButton.heightAnchor.constraint(equalToConstant: 40),
+            appleLoginButton.heightAnchor.constraint(equalToConstant: 40)
             ])
     }
 }
