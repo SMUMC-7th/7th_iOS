@@ -32,11 +32,13 @@ class LoginViewController: UIViewController {
         present(tabBarVC,animated: true)
     }
     
-    @objc func appleLoginTapped() {
+    @objc
+    private func appleLoginTapped() {
         print("appleLoginTapped")
     }
     
-    @objc func kakaoLoginTapped() {
+    @objc
+    private func kakaoLoginTapped() {
         print("kakaoLoginTapped")
     }
     

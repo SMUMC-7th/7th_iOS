@@ -44,6 +44,7 @@ class EditMyProfileView: UIView {
     public lazy var emailTextField: UITextField = {
         let textField = UITextField()
         textField.text = "rofxnaos@gmail.com"
+        textField.placeholder = "새로운 이메일을 입력해주세요!"
         textField.layer.cornerRadius = 5
         textField.layer.borderColor = UIColor(named: "LoginTextField")?.cgColor
         textField.font = .systemFont(ofSize: 13)
@@ -77,6 +78,7 @@ class EditMyProfileView: UIView {
     public lazy var pwdTextField: UITextField = {
         let textField = UITextField()
         textField.text = "rofxnaos@gmail.com"
+        textField.placeholder = "새로운 비밀번호를 입력해주세요!"
         textField.layer.cornerRadius = 5
         textField.layer.borderColor = UIColor(named: "LoginTextField")?.cgColor
         textField.font = .systemFont(ofSize: 13)

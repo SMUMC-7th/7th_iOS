@@ -28,7 +28,6 @@ class EditMyProfileViewController: UIViewController {
     private func editingEmailDone() {
         if editView.isEmailEditing {
             editView.emailTextField.text = nil
-            editView.emailTextField.placeholder = "새로운 이메일을 입력해주세요!"
             editView.emailEditButton.setTitle("확인", for: .normal)
             editView.isEmailEditing = false
         }
@@ -38,7 +37,6 @@ class EditMyProfileViewController: UIViewController {
     private func editingPwdDone() {
         if editView.ispasswordEditing {
             editView.pwdTextField.text = nil
-            editView.pwdTextField.placeholder = "새로운 비밀번호를 입력해주세요!"
             editView.pwdEditButton.setTitle("확인", for: .normal)
             editView.ispasswordEditing = false
         }
