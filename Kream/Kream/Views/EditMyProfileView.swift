@@ -10,10 +10,10 @@ import SnapKit
 
 class EditMyProfileView: UIView {
     
-    var usernemail: String = ""
-    var userpassword: String = ""
+    var isEmailEditing = true
+    var ispasswordEditing = true
     
-    private lazy var profileImage: UIImageView = {
+    public lazy var profileImage: UIImageView = {
         let imageVW = UIImageView()
         let profileImage = UIImage(named: "ProfileImage")
         imageVW.contentMode = .scaleAspectFit
@@ -21,36 +21,86 @@ class EditMyProfileView: UIView {
         return imageVW
     }()
     
-    private lazy var maininfoView: UIView = {
+    public lazy var maininfoView: UIView = {
         let view = UIView()
-        view.backgroundColor = .gray
+        //view.backgroundColor = .gray
         return view
     }()
     
-    private lazy var titleLabel: UILabel = {
+    public lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "프로필 정보"
         label.font = .systemFont(ofSize: 20, weight: .heavy)
         return label
     }()
     
-    private lazy var userEmailLabel: UILabel = {
+    public lazy var emailLabel: UILabel = {
         let label = UILabel()
         label.text = "유저 이메일"
         
         return label
     }()
     
-    private lazy var emailTextField: UITextField = {
+    public lazy var emailTextField: UITextField = {
         let textField = UITextField()
+        textField.text = "rofxnaos@gmail.com"
+        textField.layer.cornerRadius = 5
+        textField.layer.borderColor = UIColor(named: "LoginTextField")?.cgColor
+        textField.font = .systemFont(ofSize: 13)
+        textField.layer.borderWidth = 1
+        
+        let paddingView = UIView(frame: CGRect(x: 0, y: -20, width: 10, height: textField.frame.height))
+        textField.leftView = paddingView
+        textField.leftViewMode = .always
+        
         return textField
     }()
     
-    private lazy var editConfirmButtonForEmail: UIButton = {
+    public lazy var emailEditButton: UIButton = {
         let button = UIButton()
         button.setTitle("변경", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor(.black).cgColor
         return button
     }()
+    
+    public lazy var pwdLabel: UILabel = {
+        let label = UILabel()
+        label.text = "유저 비밀번호"
+        
+        return label
+    }()
+    
+    public lazy var pwdTextField: UITextField = {
+        let textField = UITextField()
+        textField.text = "rofxnaos@gmail.com"
+        textField.layer.cornerRadius = 5
+        textField.layer.borderColor = UIColor(named: "LoginTextField")?.cgColor
+        textField.font = .systemFont(ofSize: 13)
+        textField.layer.borderWidth = 1
+        
+        let paddingView = UIView(frame: CGRect(x: 0, y: -20, width: 10, height: textField.frame.height))
+        textField.leftView = paddingView
+        textField.leftViewMode = .always
+        textField.isSecureTextEntry = true
+        
+        return textField
+    }()
+    
+    public lazy var pwdEditButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("변경", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor(.black).cgColor
+        return button
+    }()
+
     
     init (frame: CGRect, usernemail: String, userpassword: String) {
         super.init(frame: frame)
@@ -64,10 +114,19 @@ class EditMyProfileView: UIView {
         self.addComponents()
     }
     
-    func addComponents() {
+    private func addComponents() {
         self.addSubview(profileImage)
         self.addSubview(maininfoView)
         maininfoView.addSubview(titleLabel)
+        
+        maininfoView.addSubview(emailLabel)
+        maininfoView.addSubview(emailTextField)
+        maininfoView.addSubview(emailEditButton)
+        
+        maininfoView.addSubview(pwdLabel)
+        maininfoView.addSubview(pwdTextField)
+        maininfoView.addSubview(pwdEditButton)
+
         
         profileImage.snp.makeConstraints{
             $0.centerX.equalToSuperview()
@@ -87,13 +146,49 @@ class EditMyProfileView: UIView {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()
         }
+        
+        emailLabel.snp.makeConstraints{
+            $0.top.equalTo(titleLabel.snp.bottom).offset(30)
+        }
+        
+        emailTextField.snp.makeConstraints{
+            $0.top.equalTo(emailLabel.snp.bottom).offset(10)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalTo(emailEditButton.snp.leading).offset(-30)
+            $0.height.equalTo(30)
+        }
+        
+        emailEditButton.snp.makeConstraints{
+            $0.top.equalTo(emailLabel.snp.bottom).offset(10)
+            $0.trailing.equalToSuperview()
+            $0.width.equalTo(58)
+            $0.height.equalTo(30)
+        }
+        
+        pwdLabel.snp.makeConstraints{
+            $0.top.equalTo(emailEditButton.snp.bottom).offset(30)
+        }
+        
+        pwdTextField.snp.makeConstraints{
+            $0.top.equalTo(pwdLabel.snp.bottom).offset(10)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalTo(pwdEditButton.snp.leading).offset(-30)
+            $0.height.equalTo(30)
+        }
+        
+        pwdEditButton.snp.makeConstraints{
+            $0.top.equalTo(pwdLabel.snp.bottom).offset(10)
+            $0.trailing.equalToSuperview()
+            $0.width.equalTo(58)
+            $0.height.equalTo(30)
+        }
+        
     }
     
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 
 }
 
