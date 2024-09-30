@@ -1,10 +1,3 @@
-//
-//  BaseViewController.swift
-//  KREAM_clone
-//
-//  Created by Dana Lim on 9/27/24.
-//
-
 import UIKit
 
 class BaseViewController: UITabBarController {
@@ -13,7 +6,7 @@ class BaseViewController: UITabBarController {
     let shopVC = ShopViewController()
     let savedVC = SavedViewController()
     let myVC = MyViewController()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

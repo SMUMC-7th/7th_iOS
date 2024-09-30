@@ -64,7 +64,7 @@ class MyView: UIView {
     }()
     
     
-    public var manageProfile: UIButton = {
+    public var manageProfileButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 8
         button.layer.borderWidth = 0.8
@@ -78,7 +78,7 @@ class MyView: UIView {
         return button
     }()
     
-    public var shareProfile: UIButton = {
+    public var shareProfileButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 8
         button.layer.borderWidth = 0.8
@@ -100,8 +100,8 @@ class MyView: UIView {
         self.addSubview(name)
         self.addSubview(followerCount)
         self.addSubview(followingCount)
-        self.addSubview(manageProfile)
-        self.addSubview(shareProfile)
+        self.addSubview(manageProfileButton)
+        self.addSubview(shareProfileButton)
 
         settings.snp.makeConstraints { make in
                     make.leading.equalTo(self.safeAreaLayoutGuide).offset(32.5)
@@ -142,14 +142,14 @@ class MyView: UIView {
                     make.height.equalTo(19)
                 }
 
-        manageProfile.snp.makeConstraints { make in
+        manageProfileButton.snp.makeConstraints { make in
                     make.top.equalTo(profileImage.snp.bottom).offset(26)
                     make.leading.equalTo(self.safeAreaLayoutGuide).offset(32.5)
                     make.width.equalTo(157)
                     make.height.equalTo(26)
                 }
 
-        shareProfile.snp.makeConstraints { make in
+        shareProfileButton.snp.makeConstraints { make in
                     make.top.equalTo(profileImage.snp.bottom).offset(26)
                     make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-32.5)
                     make.width.equalTo(157)

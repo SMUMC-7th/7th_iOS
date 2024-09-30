@@ -5,5 +5,4 @@ class SavedViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    
 }

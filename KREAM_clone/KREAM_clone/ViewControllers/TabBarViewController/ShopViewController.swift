@@ -5,7 +5,4 @@ class ShopViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    
-        
-    
 }

@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
         return view
     }()
     
+    
     @objc
     private func LoginToMyPage() {
         let viewController = MyViewController()
