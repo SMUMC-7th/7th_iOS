@@ -22,6 +22,19 @@ class EditMyProfileViewController: UIViewController {
         self.view = editView
         editView.emailEditButton.addTarget(self, action: #selector(editingEmailDone), for: .touchUpInside)
         editView.pwdEditButton.addTarget(self, action: #selector(editingPwdDone), for: .touchUpInside)
+        self.navigationItem.hidesBackButton = true
+        
+        // Create a custom button
+        let backImage = UIImage(systemName: "arrow.backward")?.withTintColor(.black)
+        let customBackButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action:  #selector(customBackAction))
+        
+        // Assign it to the left bar button item
+        self.navigationItem.leftBarButtonItem = customBackButton
+    }
+    
+    @objc func customBackAction() {
+        // Handle your custom back action (pop the view controller)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc

@@ -151,6 +151,7 @@ class EditMyProfileView: UIView {
         
         emailLabel.snp.makeConstraints{
             $0.top.equalTo(titleLabel.snp.bottom).offset(30)
+            $0.leading.equalToSuperview()
         }
         
         emailTextField.snp.makeConstraints{
@@ -169,6 +170,7 @@ class EditMyProfileView: UIView {
         
         pwdLabel.snp.makeConstraints{
             $0.top.equalTo(emailEditButton.snp.bottom).offset(30)
+            $0.leading.equalToSuperview()
         }
         
         pwdTextField.snp.makeConstraints{

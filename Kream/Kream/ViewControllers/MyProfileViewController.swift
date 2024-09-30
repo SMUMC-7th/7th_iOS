@@ -16,7 +16,7 @@ class MyProfileViewController: UIViewController {
         super.viewDidLoad()
         self.view = myProfileView
         myProfileView.editProfileButton.addTarget(self, action: #selector(pushEditProfileView), for: .touchUpInside)
-
+        self.navigationController?.navigationBar.tintColor = UIColor.black
     }
     
     @objc
