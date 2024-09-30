@@ -33,7 +33,6 @@ class EditMyProfileViewController: UIViewController {
     }
     
     @objc func customBackAction() {
-        // Handle your custom back action (pop the view controller)
         self.navigationController?.popViewController(animated: true)
     }
     
