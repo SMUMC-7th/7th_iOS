@@ -24,12 +24,12 @@ class EditMyProfileViewController: UIViewController {
         editView.pwdEditButton.addTarget(self, action: #selector(editingPwdDone), for: .touchUpInside)
         self.navigationItem.hidesBackButton = true
         
-        // Create a custom button
         let backImage = UIImage(systemName: "arrow.backward")?.withTintColor(.black)
         let customBackButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action:  #selector(customBackAction))
         
-        // Assign it to the left bar button item
         self.navigationItem.leftBarButtonItem = customBackButton
+        
+        self.navigationItem.title = "프로필 관리"
     }
     
     @objc func customBackAction() {
