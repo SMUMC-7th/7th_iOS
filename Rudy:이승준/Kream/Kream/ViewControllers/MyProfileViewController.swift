@@ -22,7 +22,7 @@ class MyProfileViewController: UIViewController {
     @objc
     private func pushEditProfileView() {
         let editView = EditMyProfileViewController()
-        navigationController?.pushViewController(editView, animated: false)
+        navigationController?.pushViewController(editView, animated: true)
     }
 
 }
