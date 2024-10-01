@@ -27,6 +27,8 @@ class MainViewController: UITabBarController {
         
         self.viewControllers = [mainHomeVC, mainStyleVC, mainShopVC, mainSavedVC, mainMyVC]
     }
+    
+    // 여기서 tabbaritem 크기 조정하기
 
 }
 

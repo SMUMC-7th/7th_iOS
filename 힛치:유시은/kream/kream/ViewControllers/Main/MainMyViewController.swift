@@ -10,36 +10,38 @@
 import UIKit
 
 class MainMyViewController: UIViewController {
-
-//    private let label = UILabel()
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        label.text = "MY 화면"
-//        label.textColor = .black
-//        
-//        view.addSubview(label)
-//        
-//        label.snp.makeConstraints {
-//            $0.centerX.equalToSuperview()
-//            $0.centerY.equalToSuperview()
-//        }
-//    }
+    
+    //private let navigationVC = UINavigationController(rootViewController: MainMyViewController())
     
     override func viewDidLoad() {
     
         super.viewDidLoad()
         self.view = mypageview
         
-//        loginview.loginButton.addTarget(self, action: #selector(loginButtonDidTap), for: .touchUpInside)
-        
     }
     
     private lazy var mypageview : MyPageView = {
         let mypage = MyPageView()
+        
+        // 네비게이션으로변경
+        mypage.manageProfileButton.addTarget(self, action: #selector(manageProfileButtonDidTap), for: .touchUpInside)
+        
         return mypage
     } ()
+    
+    
+    @objc
+    private func manageProfileButtonDidTap() {
+        let profileManagementViewController = ProfileManagementViewController()
+        
+        profileManagementViewController.modalPresentationStyle = .fullScreen
+        
+        //navigationController?.pushViewController(profileManagementViewController, animated: true)
+        
+         present(profileManagementViewController, animated: true)
+    }
+    
+    
 
 }
 

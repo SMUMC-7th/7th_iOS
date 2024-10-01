@@ -62,6 +62,8 @@ class LoginView: UIView {
     }()
     
     private lazy var passwordEnter : UITextField = {
+        // passwordEnterTextField 수정
+        // 다른 것들도 일괄수정
         let password = UITextField()
         password.translatesAutoresizingMaskIntoConstraints = false
         password.placeholder = "    비밀번호를 입력해주세요"
@@ -203,4 +205,8 @@ class LoginView: UIView {
     }
 }
 
-
+import SwiftUI
+#Preview
+{
+    LoginViewController()
+}

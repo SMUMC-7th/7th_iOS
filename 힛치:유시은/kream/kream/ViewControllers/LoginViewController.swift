@@ -14,12 +14,13 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.view = loginview
         
-        loginview.loginButton.addTarget(self, action: #selector(loginButtonDidTap), for: .touchUpInside)
+        // loginview.loginButton.addTarget(self, action: #selector(loginButtonDidTap), for: .touchUpInside)
         
     }
     
     private lazy var loginview : LoginView = {
         let login = LoginView()
+        login.loginButton.addTarget(self, action: #selector(loginButtonDidTap), for: .touchUpInside)
         return login
     } ()
 
@@ -31,6 +32,8 @@ class LoginViewController: UIViewController {
         
         present(mainViewController, animated: true)
     }
+    
+    
     
 }
 
