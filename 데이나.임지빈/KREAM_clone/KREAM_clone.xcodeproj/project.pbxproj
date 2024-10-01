@@ -14,9 +14,22 @@
 		948FD7C72CA3DC060044D8DA /* KREAM_clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KREAM_clone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		948FD7D92CA3DC070044D8DA /* Exceptions for "KREAM_clone" folder in "KREAM_clone" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 948FD7C62CA3DC060044D8DA /* KREAM_clone */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		948FD7C92CA3DC060044D8DA /* KREAM_clone */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				948FD7D92CA3DC070044D8DA /* Exceptions for "KREAM_clone" folder in "KREAM_clone" target */,
+			);
 			path = KREAM_clone;
 			sourceTree = "<group>";
 		};
