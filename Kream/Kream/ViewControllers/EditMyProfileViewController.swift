@@ -32,7 +32,8 @@ class EditMyProfileViewController: UIViewController {
         self.navigationItem.title = "프로필 관리"
     }
     
-    @objc func customBackAction() {
+    @objc
+    private func customBackAction() {
         self.navigationController?.popViewController(animated: true)
     }
     

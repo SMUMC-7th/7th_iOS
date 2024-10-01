@@ -12,8 +12,8 @@ class LoginViewController: UIViewController {
     private lazy var loginView: LoginView = {
         let view = LoginView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        //view.appleLoginButton.addTarget(self, action: #selector(appleLoginTapped), for: .touchUpInside)
-        //view.kakaoLoginButton.addTarget(self, action: #selector(kakaoLoginTapped), for: .touchUpInside)
+        view.appleLoginButton.addTarget(self, action: #selector(appleLoginTapped), for: .touchUpInside)
+        view.kakaoLoginButton.addTarget(self, action: #selector(kakaoLoginTapped), for: .touchUpInside)
         view.loginButton.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
         return view
     }()

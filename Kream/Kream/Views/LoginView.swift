@@ -3,7 +3,7 @@ import UIKit
 
 class LoginView: UIView {
     
-    private lazy var imageView: UIImageView = {
+    public lazy var imageView: UIImageView = {
         let imageView: UIImageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "KREAM LOGO")
@@ -11,7 +11,7 @@ class LoginView: UIView {
         return imageView
     }()
     
-    private lazy var emailLabel: UILabel = {
+    public lazy var emailLabel: UILabel = {
         let label: UILabel = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "이메일 주소"
@@ -36,7 +36,7 @@ class LoginView: UIView {
         return textField
     }()
     
-    private lazy var pwdLabel: UILabel = {
+    public lazy var pwdLabel: UILabel = {
         let label: UILabel = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "비밀번호"
@@ -70,7 +70,7 @@ class LoginView: UIView {
         return button
     }()
     
-    private lazy var customerLoginStack: UIStackView = {
+    public lazy var customerLoginStack: UIStackView = {
         let stackView: UIStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField, pwdLabel, pwdTextField, loginButton])
         stackView.axis = .vertical
         stackView.alignment = .leading
@@ -92,7 +92,6 @@ class LoginView: UIView {
         button.contentHorizontalAlignment = .center
         button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -100, bottom: 0, right: 0)
-        
         
         button.layer.borderColor = UIColor(named: "SocialLogin")?.cgColor
         button.layer.borderWidth = 1
@@ -128,7 +127,7 @@ class LoginView: UIView {
         return button
     }()
     
-    private lazy var socialLoginStack: UIStackView = {
+    public lazy var socialLoginStack: UIStackView = {
         let stackView: UIStackView = UIStackView(arrangedSubviews: [kakaoLoginButton, appleLoginButton])
         stackView.axis = .vertical
         stackView.alignment = .center
