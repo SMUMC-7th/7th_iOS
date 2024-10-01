@@ -7,58 +7,58 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A64A4B92CAB2B5000D43550 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A64A4B82CAB2B5000D43550 /* SnapKit */; };
+		4A64A4952CA8AE2C00D43550 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A64A4942CA8AE2C00D43550 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4AF2EB3D2CA2D42A00FB3F5E /* kream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kream.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A64A4712CA8A12700D43550 /* iOS_Week2_Regular.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_Week2_Regular.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		4AF2EB4F2CA2D42B00FB3F5E /* Exceptions for "kream" folder in "kream" target */ = {
+		4A64A4832CA8A12800D43550 /* Exceptions for "iOS_Week2_Regular" folder in "iOS_Week2_Regular" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 4AF2EB3C2CA2D42A00FB3F5E /* kream */;
+			target = 4A64A4702CA8A12700D43550 /* iOS_Week2_Regular */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		4AF2EB3F2CA2D42A00FB3F5E /* kream */ = {
+		4A64A4732CA8A12700D43550 /* iOS_Week2_Regular */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				4AF2EB4F2CA2D42B00FB3F5E /* Exceptions for "kream" folder in "kream" target */,
+				4A64A4832CA8A12800D43550 /* Exceptions for "iOS_Week2_Regular" folder in "iOS_Week2_Regular" target */,
 			);
-			path = kream;
+			path = iOS_Week2_Regular;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4AF2EB3A2CA2D42A00FB3F5E /* Frameworks */ = {
+		4A64A46E2CA8A12700D43550 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A64A4B92CAB2B5000D43550 /* SnapKit in Frameworks */,
+				4A64A4952CA8AE2C00D43550 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4AF2EB342CA2D42A00FB3F5E = {
+		4A64A4682CA8A12700D43550 = {
 			isa = PBXGroup;
 			children = (
-				4AF2EB3F2CA2D42A00FB3F5E /* kream */,
-				4AF2EB3E2CA2D42A00FB3F5E /* Products */,
+				4A64A4732CA8A12700D43550 /* iOS_Week2_Regular */,
+				4A64A4722CA8A12700D43550 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		4AF2EB3E2CA2D42A00FB3F5E /* Products */ = {
+		4A64A4722CA8A12700D43550 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4AF2EB3D2CA2D42A00FB3F5E /* kream.app */,
+				4A64A4712CA8A12700D43550 /* iOS_Week2_Regular.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,68 +66,68 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4AF2EB3C2CA2D42A00FB3F5E /* kream */ = {
+		4A64A4702CA8A12700D43550 /* iOS_Week2_Regular */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4AF2EB502CA2D42B00FB3F5E /* Build configuration list for PBXNativeTarget "kream" */;
+			buildConfigurationList = 4A64A4842CA8A12800D43550 /* Build configuration list for PBXNativeTarget "iOS_Week2_Regular" */;
 			buildPhases = (
-				4AF2EB392CA2D42A00FB3F5E /* Sources */,
-				4AF2EB3A2CA2D42A00FB3F5E /* Frameworks */,
-				4AF2EB3B2CA2D42A00FB3F5E /* Resources */,
+				4A64A46D2CA8A12700D43550 /* Sources */,
+				4A64A46E2CA8A12700D43550 /* Frameworks */,
+				4A64A46F2CA8A12700D43550 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				4AF2EB3F2CA2D42A00FB3F5E /* kream */,
+				4A64A4732CA8A12700D43550 /* iOS_Week2_Regular */,
 			);
-			name = kream;
+			name = iOS_Week2_Regular;
 			packageProductDependencies = (
-				4A64A4B82CAB2B5000D43550 /* SnapKit */,
+				4A64A4942CA8AE2C00D43550 /* SnapKit */,
 			);
-			productName = kream;
-			productReference = 4AF2EB3D2CA2D42A00FB3F5E /* kream.app */;
+			productName = iOS_Week2_Regular;
+			productReference = 4A64A4712CA8A12700D43550 /* iOS_Week2_Regular.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		4AF2EB352CA2D42A00FB3F5E /* Project object */ = {
+		4A64A4692CA8A12700D43550 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
-					4AF2EB3C2CA2D42A00FB3F5E = {
+					4A64A4702CA8A12700D43550 = {
 						CreatedOnToolsVersion = 16.0;
 					};
 				};
 			};
-			buildConfigurationList = 4AF2EB382CA2D42A00FB3F5E /* Build configuration list for PBXProject "kream" */;
+			buildConfigurationList = 4A64A46C2CA8A12700D43550 /* Build configuration list for PBXProject "iOS_Week2_Regular" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 4AF2EB342CA2D42A00FB3F5E;
+			mainGroup = 4A64A4682CA8A12700D43550;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				4A64A4B72CAB2B5000D43550 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				4A64A4932CA8AE2C00D43550 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 4AF2EB3E2CA2D42A00FB3F5E /* Products */;
+			productRefGroup = 4A64A4722CA8A12700D43550 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4AF2EB3C2CA2D42A00FB3F5E /* kream */,
+				4A64A4702CA8A12700D43550 /* iOS_Week2_Regular */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4AF2EB3B2CA2D42A00FB3F5E /* Resources */ = {
+		4A64A46F2CA8A12700D43550 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -137,7 +137,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4AF2EB392CA2D42A00FB3F5E /* Sources */ = {
+		4A64A46D2CA8A12700D43550 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -147,7 +147,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		4AF2EB512CA2D42B00FB3F5E /* Debug */ = {
+		4A64A4852CA8A12800D43550 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -155,7 +155,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = kream/Info.plist;
+				INFOPLIST_FILE = iOS_Week2_Regular/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -165,7 +165,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.umc.kream;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.umc.iOS-Week2-Regular";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -173,7 +173,7 @@
 			};
 			name = Debug;
 		};
-		4AF2EB522CA2D42B00FB3F5E /* Release */ = {
+		4A64A4862CA8A12800D43550 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -181,7 +181,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = kream/Info.plist;
+				INFOPLIST_FILE = iOS_Week2_Regular/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -191,7 +191,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.umc.kream;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.umc.iOS-Week2-Regular";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -199,7 +199,7 @@
 			};
 			name = Release;
 		};
-		4AF2EB532CA2D42B00FB3F5E /* Debug */ = {
+		4A64A4872CA8A12800D43550 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -262,7 +262,7 @@
 			};
 			name = Debug;
 		};
-		4AF2EB542CA2D42B00FB3F5E /* Release */ = {
+		4A64A4882CA8A12800D43550 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -321,20 +321,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4AF2EB382CA2D42A00FB3F5E /* Build configuration list for PBXProject "kream" */ = {
+		4A64A46C2CA8A12700D43550 /* Build configuration list for PBXProject "iOS_Week2_Regular" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4AF2EB532CA2D42B00FB3F5E /* Debug */,
-				4AF2EB542CA2D42B00FB3F5E /* Release */,
+				4A64A4872CA8A12800D43550 /* Debug */,
+				4A64A4882CA8A12800D43550 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4AF2EB502CA2D42B00FB3F5E /* Build configuration list for PBXNativeTarget "kream" */ = {
+		4A64A4842CA8A12800D43550 /* Build configuration list for PBXNativeTarget "iOS_Week2_Regular" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4AF2EB512CA2D42B00FB3F5E /* Debug */,
-				4AF2EB522CA2D42B00FB3F5E /* Release */,
+				4A64A4852CA8A12800D43550 /* Debug */,
+				4A64A4862CA8A12800D43550 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -342,7 +342,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4A64A4B72CAB2B5000D43550 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		4A64A4932CA8AE2C00D43550 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
@@ -353,12 +353,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4A64A4B82CAB2B5000D43550 /* SnapKit */ = {
+		4A64A4942CA8AE2C00D43550 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4A64A4B72CAB2B5000D43550 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 4A64A4932CA8AE2C00D43550 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 4AF2EB352CA2D42A00FB3F5E /* Project object */;
+	rootObject = 4A64A4692CA8A12700D43550 /* Project object */;
 }

@@ -76,7 +76,7 @@ class LoginView: UIView {
         return password
     }()
     
-    private lazy var loginButton : UIButton = {
+    public lazy var loginButton : UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("로그인", for: .normal)
@@ -204,8 +204,3 @@ class LoginView: UIView {
 }
 
 
-//import SwiftUI
-//#Preview
-//{
-//    LoginViewController()
-//}
