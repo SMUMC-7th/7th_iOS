@@ -19,6 +19,22 @@ class ProfileManagementView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+//    private lazy var profileBackButton : UIButton = {
+//        let button = UIButton()
+//        button.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
+//        button.tintColor = .black
+//        
+//        return button
+//    }()
+    
+    private lazy var profileManagementLabel : UILabel = {
+        let label = UILabel()
+        label.text = "프로필 관리"
+        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        
+        return label
+    }()
+    
     private lazy var profileImage : UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "profileImage")
@@ -30,7 +46,7 @@ class ProfileManagementView: UIView {
     private lazy var profileInformationLable : UILabel = {
         let label = UILabel()
         label.text = "프로필 정보"
-        label.font = UIFont.systemFont(ofSize: 21, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         
         return label
     }()
@@ -38,7 +54,7 @@ class ProfileManagementView: UIView {
     private lazy var userEmailLabel : UILabel = {
         let label = UILabel()
         label.text = "유저 이메일"
-        //label.font = UIFont.sy
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         
         return label
     }()
@@ -59,7 +75,7 @@ class ProfileManagementView: UIView {
     private lazy var userPasswordLabel : UILabel = {
         let label = UILabel()
         label.text = "유저 비밀번호"
-        //label.font = UIFont.sy
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         
         return label
     }()
@@ -81,11 +97,12 @@ class ProfileManagementView: UIView {
         let button = UIButton()
         button.setTitle("변경", for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.black.cgColor
         
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = 5
         
         return button
     }()
@@ -94,11 +111,12 @@ class ProfileManagementView: UIView {
         let button = UIButton()
         button.setTitle("변경", for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16) 
         
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.black.cgColor
         
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = 5
         
         return button
     }()
@@ -106,6 +124,8 @@ class ProfileManagementView: UIView {
     
     
     private func addComponents() {
+        //self.addSubview(profileBackButton)
+        self.addSubview(profileManagementLabel)
         self.addSubview(profileImage)
         self.addSubview(profileInformationLable)
         self.addSubview(userEmailLabel)
@@ -114,6 +134,17 @@ class ProfileManagementView: UIView {
         self.addSubview(userPasswordLabel)
         self.addSubview(userPasswordEnterTextField)
         self.addSubview(userPasswordChangeButton)
+        
+//        profileBackButton.snp.makeConstraints {
+//            $0.top.equalToSuperview().offset(67)
+//            $0.leading.equalToSuperview().offset(27)
+//        }
+        
+        profileManagementLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(66)
+            // $0.leading.equalToSuperview().offset(164)
+            $0.centerX.equalToSuperview()
+        }
         
         profileImage.snp.makeConstraints {
             $0.top.equalToSuperview().offset(144)

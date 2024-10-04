@@ -19,12 +19,9 @@ class MyPageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // 채워넣기
-    
     private lazy var settingButton : UIButton = {
         let button = UIButton()
         let image = UIImage(named: "setting")
-        // 다시 전부 선택해서 svg 파일 수정하기
 
         button.setImage(image, for: .normal)
         
