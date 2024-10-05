@@ -22,13 +22,21 @@ class EditMyProfileViewController: UIViewController {
         self.view = editView
         editView.emailEditButton.addTarget(self, action: #selector(editingEmailDone), for: .touchUpInside)
         editView.pwdEditButton.addTarget(self, action: #selector(editingPwdDone), for: .touchUpInside)
+        
+        setupNavigationBar()
+    }
+    
+    private func setUpBackButton() {
+        
+    }
+    
+    private func setupNavigationBar() {
         self.navigationItem.hidesBackButton = true
         
         let backImage = UIImage(systemName: "arrow.backward")?.withTintColor(.black)
         let customBackButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action:  #selector(customBackAction))
         
         self.navigationItem.leftBarButtonItem = customBackButton
-        
         self.navigationItem.title = "프로필 관리"
     }
     
