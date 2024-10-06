@@ -9,6 +9,8 @@ import UIKit
 
 class EditMyProfileViewController: UIViewController {
     
+    let userDefaults = UserDefaults.standard
+    
     var usernemail: String = ""
     var userpassword: String = ""
     
@@ -19,15 +21,11 @@ class EditMyProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadUserDefaults()
         self.view = editView
-        editView.emailEditButton.addTarget(self, action: #selector(editingEmailDone), for: .touchUpInside)
-        editView.pwdEditButton.addTarget(self, action: #selector(editingPwdDone), for: .touchUpInside)
-        
+        editView.emailEditButton.addTarget(self, action: #selector(editingEmailToggle), for: .touchUpInside)
+        editView.pwdEditButton.addTarget(self, action: #selector(editingPwdToggle), for: .touchUpInside)
         setupNavigationBar()
-    }
-    
-    private func setUpBackButton() {
-        
     }
     
     private func setupNavigationBar() {
@@ -40,26 +38,52 @@ class EditMyProfileViewController: UIViewController {
         self.navigationItem.title = "프로필 관리"
     }
     
+    private func loadUserDefaults() {
+        guard let email = userDefaults.string(forKey: "user_email"),
+              let pwd = userDefaults.string(forKey: "user_pwd") else {
+            print("There is no Value for user_email, user_pwd")
+            return
+        }
+        editView.emailTextField.text = email
+        editView.pwdTextField.text = pwd
+    }
+    
     @objc
     private func customBackAction() {
         self.navigationController?.popViewController(animated: true)
     }
     
     @objc
-    private func editingEmailDone() {
-        if editView.isEmailEditing {
-            editView.emailTextField.text = nil
+    private func editingEmailToggle() {
+        editView.emailTextField.isUserInteractionEnabled.toggle()
+        let enable = editView.emailTextField.isUserInteractionEnabled
+        
+        if enable { //
             editView.emailEditButton.setTitle("확인", for: .normal)
-            editView.isEmailEditing = false
+            print(true)
+        } else { //
+            userDefaults.set(editView.emailTextField.text, forKey: "user_email")
+            editView.emailEditButton.setTitle("변경", for: .normal)
+            print(false)
         }
     }
     
     @objc
-    private func editingPwdDone() {
-        if editView.ispasswordEditing {
-            editView.pwdTextField.text = nil
+    private func editingPwdToggle() {
+        editView.pwdTextField.isUserInteractionEnabled.toggle()
+        let enable = editView.pwdTextField.isUserInteractionEnabled
+        
+        if enable {
             editView.pwdEditButton.setTitle("확인", for: .normal)
-            editView.ispasswordEditing = false
+            print(true)
+        } else {
+            userDefaults.set(editView.pwdTextField.text, forKey: "user_pwd")
+            editView.pwdEditButton.setTitle("변경", for: .normal)
+            print(false)
         }
+    }
+    
+    public func setProfileImage(image : UIImage) {
+        editView.profileImage.image = image
     }
 }

@@ -46,7 +46,7 @@ class MyProfileView: UIView {
         return view
     }()
     
-    private lazy var profileImage: UIImageView = {
+    public lazy var profileImage: UIImageView = {
         let imageVW = UIImageView()
         let profileImage = UIImage(named: "ProfileImage")
         imageVW.contentMode = .scaleAspectFit

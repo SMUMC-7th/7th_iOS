@@ -10,12 +10,9 @@ import SnapKit
 
 class EditMyProfileView: UIView {
     
-    var isEmailEditing = true
-    var ispasswordEditing = true
-    
     public lazy var profileImage: UIImageView = {
         let imageVW = UIImageView()
-        let profileImage = UIImage(named: "ProfileImage")
+        let profileImage = UIImage(named: "Ring01")
         imageVW.contentMode = .scaleAspectFit
         imageVW.image = profileImage
         return imageVW
@@ -27,28 +24,28 @@ class EditMyProfileView: UIView {
         return view
     }()
     
-    public lazy var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "프로필 정보"
         label.font = .systemFont(ofSize: 20, weight: .heavy)
         return label
     }()
     
-    public lazy var emailLabel: UILabel = {
+    private lazy var emailLabel: UILabel = {
         let label = UILabel()
         label.text = "유저 이메일"
-        
         return label
     }()
     
     public lazy var emailTextField: UITextField = {
         let textField = UITextField()
-        textField.text = "rofxnaos@gmail.com"
+        //textField.text = "rofxnaos@gmail.com"
         textField.placeholder = "새로운 이메일을 입력해주세요!"
         textField.layer.cornerRadius = 5
         textField.layer.borderColor = UIColor(named: "LoginTextField")?.cgColor
         textField.font = .systemFont(ofSize: 13)
         textField.layer.borderWidth = 1
+        textField.isUserInteractionEnabled = false
         
         let paddingView = UIView(frame: CGRect(x: 0, y: -20, width: 10, height: textField.frame.height))
         textField.leftView = paddingView
@@ -71,18 +68,18 @@ class EditMyProfileView: UIView {
     public lazy var pwdLabel: UILabel = {
         let label = UILabel()
         label.text = "유저 비밀번호"
-        
         return label
     }()
     
     public lazy var pwdTextField: UITextField = {
         let textField = UITextField()
-        textField.text = "rofxnaos@gmail.com"
+        //textField.text = "password"
         textField.placeholder = "새로운 비밀번호를 입력해주세요!"
         textField.layer.cornerRadius = 5
         textField.layer.borderColor = UIColor(named: "LoginTextField")?.cgColor
         textField.font = .systemFont(ofSize: 13)
         textField.layer.borderWidth = 1
+        textField.isUserInteractionEnabled = false
         
         let paddingView = UIView(frame: CGRect(x: 0, y: -20, width: 10, height: textField.frame.height))
         textField.leftView = paddingView

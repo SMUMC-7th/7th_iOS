@@ -1,9 +1,3 @@
-//
-//  MyProfileViewController.swift
-//  Kream
-//
-//  Created by 이승준 on 9/29/24.
-//
 
 import UIKit
 import SnapKit
@@ -22,6 +16,7 @@ class MyProfileViewController: UIViewController {
     @objc
     private func pushEditProfileView() {
         let editView = EditMyProfileViewController()
+        editView.setProfileImage(image: myProfileView.profileImage.image!)
         navigationController?.pushViewController(editView, animated: true)
     }
 
@@ -29,5 +24,5 @@ class MyProfileViewController: UIViewController {
 
 import SwiftUI
 #Preview {
-    MyProfileViewController()
+    UINavigationController(rootViewController:  MyProfileViewController())
 }

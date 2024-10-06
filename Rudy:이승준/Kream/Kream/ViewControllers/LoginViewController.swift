@@ -9,7 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    private let userdefaults = UserDefaults.standard
+    private let userDefaults = UserDefaults.standard
 
     private lazy var loginView: LoginView = {
         let view = LoginView()
@@ -44,13 +44,13 @@ class LoginViewController: UIViewController {
         
         print("email is \(email), pwd is \(pwd)")
         
-        userdefaults.set(email, forKey: "user_email")
-        userdefaults.set(pwd, forKey: "user_pwd")
+        userDefaults.set(email, forKey: "user_email")
+        userDefaults.set(pwd, forKey: "user_pwd")
     }
     
     private func loadUserdefaults() {
-        guard let email = userdefaults.string(forKey: "user_email"),
-              let pwd = userdefaults.string(forKey: "user_pwd") else {
+        guard let email = userDefaults.string(forKey: "user_email"),
+              let pwd = userDefaults.string(forKey: "user_pwd") else {
             print("There is no Value for user_email, user_pwd")
             return
         }
