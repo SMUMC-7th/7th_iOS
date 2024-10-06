@@ -6,44 +6,56 @@
 //
 
 import UIKit
+import SnapKit
 
 class SavedTableViewCell: UITableViewCell {
     
     static let identifier = "SavedCell"
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    //MARK: - UI Components
+    private lazy var productImage: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
+    private lazy var productName: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setViews()
         self.setComponents()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var containerView: UIView = {
-        let container = UIView()
-        container.backgroundColor = .gray
-        return container
-    }()
-
+    //MARK: - Set Components
     private func setViews() {
-        self.addSubview(containerView)
-        
-        
+        self.addSubview(productImage)
+        self.addSubview(productName)
     }
     
     private func setComponents() {
-        containerView.snp.makeConstraints { make in
+        productImage.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.bottom.equalToSuperview()
             make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
+            make.height.equalTo(72)
+        }
+        
+        productName.snp.makeConstraints { make in
+            make.top.equalToSuperview()
         }
     }
     
-    public func configure(product: Product) {
-        
+    public func configure(with product: Product) {
+        print("name of product is \(product.name)")
+        productImage.image = product.image
+        productName.text = product.name
     }
     
 }

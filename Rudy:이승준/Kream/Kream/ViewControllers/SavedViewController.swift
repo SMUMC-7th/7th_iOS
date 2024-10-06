@@ -15,6 +15,7 @@ class SavedViewController: UIViewController {
     private lazy var savedTableView :SavedTableView = {
         let view = SavedTableView(frame: .zero, total: data.count)
         view.savedTableView.dataSource = self
+        view.savedTableView.delegate = self
         return view
     }()
 
@@ -26,16 +27,19 @@ class SavedViewController: UIViewController {
 }
 
 extension SavedViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.count
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = data[indexPath.row]
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SavedTableViewCell.identifier, for: indexPath) as? SavedTableViewCell else {
             return UITableViewCell()
         }
         
-        cell.configure(product: data[indexPath.row])
+        cell.configure(with: item)
         
         return cell
     }

@@ -27,6 +27,8 @@ class SavedTableView: UIView {
     
     lazy var savedTableView: UITableView = {
         let table = UITableView()
+        table.register(SavedTableViewCell.self, forCellReuseIdentifier: SavedTableViewCell.identifier)
+        table.backgroundColor = .lightGray
         return table
     }()
     
@@ -60,7 +62,7 @@ class SavedTableView: UIView {
         
         savedTableView.snp.makeConstraints { make in
             make.top.equalTo(totalNumberLabel.snp.bottom).offset(20)
-            make.leading.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
         }
     }
     
@@ -69,4 +71,9 @@ class SavedTableView: UIView {
     }
         
     
+}
+
+import SwiftUI
+#Preview {
+    SavedViewController()
 }

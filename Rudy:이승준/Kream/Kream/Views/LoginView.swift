@@ -22,6 +22,7 @@ class LoginView: UIView {
     public lazy var emailTextField: UITextField = {
         let textField: UITextField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.text = nil
         textField.placeholder = "예)kream@kream.co.kr"
         textField.layer.borderColor = UIColor(named: "LoginTextField")?.cgColor
         textField.layer.borderWidth = 1
@@ -48,6 +49,7 @@ class LoginView: UIView {
         let textField: UITextField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.widthAnchor.constraint(equalToConstant: 303).isActive = true
+        textField.text = nil
         textField.placeholder = "비밀번호를 입력해주세요."
         textField.layer.borderColor = UIColor(named: "LoginTextField")?.cgColor
         textField.layer.borderWidth = 1
