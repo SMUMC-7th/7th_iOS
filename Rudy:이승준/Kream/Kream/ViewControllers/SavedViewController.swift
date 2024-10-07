@@ -16,6 +16,7 @@ class SavedViewController: UIViewController {
         let view = SavedTableView(frame: .zero, total: data.count)
         view.savedTableView.dataSource = self
         view.savedTableView.delegate = self
+        view.savedTableView.rowHeight = 99
         return view
     }()
 
@@ -34,13 +35,8 @@ extension SavedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = data[indexPath.row]
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SavedTableViewCell.identifier, for: indexPath) as? SavedTableViewCell else {
-            return UITableViewCell()
-        }
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: SavedTableViewCell.identifier, for: indexPath) as! SavedTableViewCell
         cell.configure(with: item)
-        
         return cell
     }
 }

@@ -54,7 +54,7 @@ final class SavedProducts {
                 블라블라블라블라
                 블라블라블라블라블라
                 """,
-                image: UIImage(named: ""),
+                image: UIImage(named: "Guitar01"),
                 price: 120000, bookmarked: true),
     ]
 }

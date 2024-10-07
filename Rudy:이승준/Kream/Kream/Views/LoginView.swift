@@ -22,6 +22,7 @@ class LoginView: UIView {
     public lazy var emailTextField: UITextField = {
         let textField: UITextField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.autocapitalizationType = .none
         textField.text = nil
         textField.placeholder = "예)kream@kream.co.kr"
         textField.layer.borderColor = UIColor(named: "LoginTextField")?.cgColor

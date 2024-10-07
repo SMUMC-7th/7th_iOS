@@ -27,8 +27,13 @@ class SavedTableView: UIView {
     
     lazy var savedTableView: UITableView = {
         let table = UITableView()
-        table.register(SavedTableViewCell.self, forCellReuseIdentifier: SavedTableViewCell.identifier)
-        table.backgroundColor = .lightGray
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.rowHeight = UITableView.automaticDimension
+        table.estimatedRowHeight = 44
+        table.separatorStyle = .none
+        table.register(
+            SavedTableViewCell.self,
+            forCellReuseIdentifier: SavedTableViewCell.identifier)
         return table
     }()
     
@@ -63,6 +68,7 @@ class SavedTableView: UIView {
         savedTableView.snp.makeConstraints { make in
             make.top.equalTo(totalNumberLabel.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
         }
     }
     

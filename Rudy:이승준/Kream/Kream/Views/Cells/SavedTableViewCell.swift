@@ -12,50 +12,146 @@ class SavedTableViewCell: UITableViewCell {
     
     static let identifier = "SavedCell"
     
-    //MARK: - UI Components
-    private lazy var productImage: UIImageView = {
-        let image = UIImageView()
-        image.contentMode = .scaleAspectFit
-        return image
-    }()
-    
-    private lazy var productName: UILabel = {
-        let label = UILabel()
-        return label
-    }()
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setViews()
-        self.setComponents()
+        self.setConstraints()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.mainImageView.image = nil
+        self.nameLabel.text = nil
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - UI Components
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        //view.backgroundColor = .ivory
+        return view
+    }()
+    
+    private lazy var mainImageView: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
+    private lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+        label.textColor = UIColor.black
+        return label
+    }()
+    
+    private lazy var bookmarkButton: UIButton = {
+        let button = UIButton()
+        let bookmarkIcon = UIImage(named: "bookmark.icon")
+        button.setImage(bookmarkIcon, for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 0)
+        return button
+    }()
+    
+    private lazy var priceLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        return label
+    }()
+    
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 10)
+        label.textColor = .gray
+        label.numberOfLines = 2
+        return label
+    }()
+    
+    private lazy var underLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .socialLogin
+        return view
+    }()
+    
     //MARK: - Set Components
     private func setViews() {
-        self.addSubview(productImage)
-        self.addSubview(productName)
+        self.addSubview(containerView)
+        self.addSubview(underLineView)
+        containerView.addSubview(mainImageView)
+        containerView.addSubview(nameLabel)
+        containerView.addSubview(bookmarkButton)
+        containerView.addSubview(priceLabel)
+        containerView.addSubview(descriptionLabel)
     }
     
-    private func setComponents() {
-        productImage.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.height.equalTo(72)
+    private func setConstraints() {
+        let outbound = 12
+        let containerHeight = 72
+        
+        containerView.snp.makeConstraints { make in
+            make.leading.trailing.top.bottom.equalToSuperview().inset(outbound)
+            make.height.equalTo(containerHeight)
         }
         
-        productName.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+        mainImageView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.height.width.equalTo(containerHeight)
         }
+        
+        nameLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalTo(mainImageView.snp.trailing).offset(12)
+        }
+        
+        descriptionLabel.snp.makeConstraints { make in
+            make.leading.equalTo(mainImageView.snp.trailing).offset(10)
+            make.top.equalTo(nameLabel.snp.bottom).offset(3)
+            make.width.equalTo(180)
+        }
+        
+        bookmarkButton.snp.makeConstraints { make in
+            make.top.trailing.equalToSuperview()
+        }
+        
+        priceLabel.snp.makeConstraints { make in
+            make.trailing.bottom.equalToSuperview()
+        }
+        
+        underLineView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.height.equalTo(1)
+            make.leading.trailing.equalToSuperview().inset(10)
+        }
+        
     }
     
     public func configure(with product: Product) {
-        print("name of product is \(product.name)")
-        productImage.image = product.image
-        productName.text = product.name
+        mainImageView.image = product.image
+        nameLabel.text = product.name
+        priceLabel.text = setPriceLabel(price : product.price)
+        descriptionLabel.text = product.desription
+    }
+    
+    private func setPriceLabel(price row: Int) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        guard let formattedNumber = numberFormatter.string(from: NSNumber(value: row)) else {
+            return "??? 원"
+        }
+        return formattedNumber + "원"
     }
     
 }
