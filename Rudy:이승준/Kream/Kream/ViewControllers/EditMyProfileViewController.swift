@@ -60,11 +60,9 @@ class EditMyProfileViewController: UIViewController {
         
         if enable { //
             editView.emailEditButton.setTitle("확인", for: .normal)
-            print(true)
         } else { //
             userDefaults.set(editView.emailTextField.text, forKey: "user_email")
             editView.emailEditButton.setTitle("변경", for: .normal)
-            print(false)
         }
     }
     
@@ -75,11 +73,9 @@ class EditMyProfileViewController: UIViewController {
         
         if enable {
             editView.pwdEditButton.setTitle("확인", for: .normal)
-            print(true)
         } else {
             userDefaults.set(editView.pwdTextField.text, forKey: "user_pwd")
             editView.pwdEditButton.setTitle("변경", for: .normal)
-            print(false)
         }
     }
     

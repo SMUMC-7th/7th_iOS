@@ -42,8 +42,6 @@ class LoginViewController: UIViewController {
             return
         }
         
-        print("email is \(email), pwd is \(pwd)")
-        
         userDefaults.set(email, forKey: "user_email")
         userDefaults.set(pwd, forKey: "user_pwd")
     }
