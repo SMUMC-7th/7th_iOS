@@ -46,11 +46,14 @@ class LoginView: UIView {
         return label
     }()
     
-    private lazy var idEnter : UITextField = {
+    public lazy var idEnter : UITextField = {
         let login = UITextField()
         login.translatesAutoresizingMaskIntoConstraints = false
-        login.placeholder = "   예) kream@kream.co.kr"
+        login.placeholder = "예) kream@kream.co.kr"
         login.font = UIFont.systemFont(ofSize: 15, weight: .thin)
+        
+        login.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
+        login.leftViewMode = .always
         
         login.layer.borderWidth = 1
         login.layer.borderColor = UIColor.gray.cgColor
@@ -61,13 +64,16 @@ class LoginView: UIView {
         return login
     }()
     
-    private lazy var passwordEnter : UITextField = {
+    public lazy var passwordEnter : UITextField = {
         // passwordEnterTextField 수정
         // 다른 것들도 일괄수정
         let password = UITextField()
         password.translatesAutoresizingMaskIntoConstraints = false
-        password.placeholder = "    비밀번호를 입력해주세요"
+        password.placeholder = "비밀번호를 입력해주세요"
         password.font = UIFont.systemFont(ofSize: 15, weight: .thin)
+        
+        password.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
+        password.leftViewMode = .always
         
         password.layer.borderWidth = 1
         password.layer.borderColor = UIColor.gray.cgColor

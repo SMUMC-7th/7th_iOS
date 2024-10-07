@@ -47,7 +47,7 @@ class MyPageView: UIView {
     
     private lazy var profileName : UILabel = {
         let label = UILabel()
-        label.text = "Jeong_iOS"
+        label.text = "Hitch_iOS"
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         
         return label
@@ -55,7 +55,7 @@ class MyPageView: UIView {
     
     private lazy var profileFollower : UILabel = {
         let label = UILabel()
-        label.text = "팔로워 326"
+        label.text = "팔로워 1M"
         label.font = UIFont.systemFont(ofSize: 13)
         
         return label
@@ -63,7 +63,7 @@ class MyPageView: UIView {
     
     private lazy var profileFollowing : UILabel = {
         let label = UILabel()
-        label.text = "팔로잉 20"
+        label.text = "팔로잉 100"
         label.font = UIFont.systemFont(ofSize: 13)
         
         return label

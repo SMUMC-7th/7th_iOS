@@ -9,17 +9,41 @@ import UIKit
  
 class ProfileManagementViewController: UIViewController {
     
-    override func viewDidLoad() {
+    private let loginUserDefaultsModel = LoginUserDefaultsModel()
     
+    // 옵셔널 사용 위해서 ? 붙여줌(초기화하기 애매할때)
+    var userId: String?
+    var userPassword: String?
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
         self.view = profilemanagementview
-        
         setUpNavigationBar()
+        
+        loadIdValue()
+        loadPasswordValue()
+        
+        profilemanagementview.userEmailEnterTextField.isUserInteractionEnabled = false
+        profilemanagementview.userPasswordEnterTextField.isUserInteractionEnabled = false
+        
+        profilemanagementview.userEmailChangeButton.addTarget(self, action: #selector(emailChangeButtonDidTap), for: .touchUpInside)
+        profilemanagementview.userPasswordChangeButton.addTarget(self, action: #selector(passwordChangeButtonDidTap), for: .touchUpInside)
     }
     
-    private lazy var profilemanagementview : ProfileManagementView = {
+    public func loadIdValue() {
+        if let savedId = loginUserDefaultsModel.loadUserId() {
+            profilemanagementview.userEmailEnterTextField.text = savedId
+        }
+    }
+    
+    public func loadPasswordValue() {
+        if let savedPassword = loginUserDefaultsModel.loadUserPassword() {
+            profilemanagementview.userPasswordEnterTextField.text = savedPassword
+        }
+    }
+    
+    public lazy var profilemanagementview : ProfileManagementView = {
         let profilemanagement = ProfileManagementView()
-                        
         return profilemanagement
     }()
     
@@ -31,10 +55,40 @@ class ProfileManagementViewController: UIViewController {
     }
     
     @objc
-    public func backButtonDidTap() {
-        let mainMyViewController = MainMyViewController()
-        
+    private func backButtonDidTap() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    private func emailChangeButtonDidTap() {
+        // 변경 -> 확인
+        if profilemanagementview.userEmailChangeButton.title(for: .normal) == "변경" {
+            profilemanagementview.userEmailChangeButton.setTitle("확인", for: .normal)
+            profilemanagementview.userEmailEnterTextField.isUserInteractionEnabled = true
+        }
+        // 확인 -> 변경
+        else if profilemanagementview.userEmailChangeButton.title(for: .normal) == "확인" {
+            if let newEmail = profilemanagementview.userEmailEnterTextField.text, !newEmail.isEmpty {
+                loginUserDefaultsModel.saveUserId(newEmail)
+                profilemanagementview.userEmailChangeButton.setTitle("변경", for: .normal)
+                profilemanagementview.userEmailEnterTextField.isUserInteractionEnabled = false
+            }
+        }
+    }
+    
+    @objc
+    private func passwordChangeButtonDidTap() {
+        if profilemanagementview.userPasswordChangeButton.title(for: .normal) == "변경" {
+            profilemanagementview.userPasswordChangeButton.setTitle("확인", for: .normal)
+            profilemanagementview.userPasswordEnterTextField.isUserInteractionEnabled = true
+        }
+        else if profilemanagementview.userPasswordChangeButton.title(for: .normal) == "확인" {
+            if let newPassword = profilemanagementview.userPasswordEnterTextField.text, !newPassword.isEmpty {
+                loginUserDefaultsModel.saveUserPassword(newPassword)
+                profilemanagementview.userPasswordChangeButton.setTitle("변경", for: .normal)
+                profilemanagementview.userPasswordEnterTextField.isUserInteractionEnabled = false
+            }
+        }
     }
 }
 

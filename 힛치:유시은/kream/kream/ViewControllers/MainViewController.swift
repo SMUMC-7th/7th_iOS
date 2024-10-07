@@ -28,6 +28,12 @@ class MainViewController: UITabBarController {
         
         self.viewControllers = [mainHomeVC, mainStyleVC, mainShopVC, mainSavedVC, mainMyVC]
         
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        tabBar.standardAppearance = appearance
+        tabBar.scrollEdgeAppearance = appearance
+        
 //        // 탭 바 아이템의 색상을 모두 검정색으로 설정
 //            if let tabBar = self.tabBar as? UITabBar {
 //                tabBar.tintColor = .black // 선택된 탭 아이템의 색상

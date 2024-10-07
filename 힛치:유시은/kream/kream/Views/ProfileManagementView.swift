@@ -59,13 +59,15 @@ class ProfileManagementView: UIView {
         return label
     }()
     
-    private lazy var userEmailEnterTextField : UITextField = {
+    public lazy var userEmailEnterTextField : UITextField = {
         let textField = UITextField()
-        textField.placeholder = "   새로운 이메일을 입력해주세요!"
-        //textField.placeholder.
+        textField.placeholder = "새로운 이메일을 입력해주세요!"
+        
+        textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 11.0, height: 0.0))
+        textField.leftViewMode = .always
         
         textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.borderColor = UIColor.lightGray.cgColor
         
         textField.layer.cornerRadius = 10
         
@@ -80,20 +82,22 @@ class ProfileManagementView: UIView {
         return label
     }()
     
-    private lazy var userPasswordEnterTextField : UITextField = {
+    public lazy var userPasswordEnterTextField : UITextField = {
         let textField = UITextField()
         textField.placeholder = "   새로운 비밀번호를 입력해주세요!"
-        //textField.placeholder.
+        
+        textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 11.0, height: 0.0))
+        textField.leftViewMode = .always
         
         textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.borderColor = UIColor.lightGray.cgColor
         
         textField.layer.cornerRadius = 10
         
         return textField
     }()
     
-    private lazy var userEmailChangeButton : UIButton = {
+    public lazy var userEmailChangeButton : UIButton = {
         let button = UIButton()
         button.setTitle("변경", for: .normal)
         button.setTitleColor(.black, for: .normal)
@@ -107,7 +111,7 @@ class ProfileManagementView: UIView {
         return button
     }()
     
-    private lazy var userPasswordChangeButton : UIButton = {
+    public lazy var userPasswordChangeButton : UIButton = {
         let button = UIButton()
         button.setTitle("변경", for: .normal)
         button.setTitleColor(.black, for: .normal)
