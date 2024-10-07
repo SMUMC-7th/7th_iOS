@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 
 class MyView: UIView {
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
@@ -102,58 +102,60 @@ class MyView: UIView {
         self.addSubview(followingCount)
         self.addSubview(manageProfileButton)
         self.addSubview(shareProfileButton)
-
+        
         settings.snp.makeConstraints { make in
-                    make.leading.equalTo(self.safeAreaLayoutGuide).offset(32.5)
-                    make.top.equalTo(self.safeAreaLayoutGuide).offset(30)
-                    make.width.height.equalTo(25)
-                }
-
+            make.leading.equalTo(self.safeAreaLayoutGuide).offset(32.5)
+            make.top.equalToSuperview().offset(75)
+            make.width.height.equalTo(25)
+        }
+        
         camera.snp.makeConstraints { make in
-                    make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-32.5)
-                    make.top.equalTo(self.safeAreaLayoutGuide).offset(30)
-                    make.width.height.equalTo(25)
-                }
-
+            make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-32.5)
+            make.top.equalToSuperview().offset(75)
+            make.width.height.equalTo(25)
+        }
+        
         profileImage.snp.makeConstraints { make in
-                    make.top.equalTo(settings.snp.bottom).offset(26)
-                    make.leading.equalTo(self.safeAreaLayoutGuide).offset(32.5)
-                    make.width.height.equalTo(90)
-                }
-
+            make.top.equalTo(settings.snp.bottom).offset(26)
+            make.leading.equalTo(self.safeAreaLayoutGuide).offset(32.5)
+            make.width.height.equalTo(90)
+        }
+        
         name.snp.makeConstraints { make in
-                    make.top.equalTo(profileImage.snp.top).offset(21)
-                    make.leading.equalTo(profileImage.snp.trailing).offset(16)
-                    make.width.equalTo(115)
-                    make.height.equalTo(23)
-                }
-
+            make.top.equalTo(profileImage.snp.top).offset(21)
+            make.leading.equalTo(profileImage.snp.trailing).offset(16)
+            make.width.equalTo(115)
+            make.height.equalTo(23)
+        }
+        
         followerCount.snp.makeConstraints { make in
-                    make.top.equalTo(name.snp.bottom).offset(6)
-                    make.leading.equalTo(profileImage.snp.trailing).offset(16)
-                    make.width.equalTo(58)
-                    make.height.equalTo(19)
-                }
-
+            make.top.equalTo(name.snp.bottom).offset(6)
+            make.leading.equalTo(profileImage.snp.trailing).offset(16)
+            make.width.equalTo(58)
+            make.height.equalTo(19)
+        }
+        
         followingCount.snp.makeConstraints { make in
-                    make.top.equalTo(name.snp.bottom).offset(6)
-                    make.leading.equalTo(followerCount.snp.trailing).offset(8)
-                    make.width.equalTo(57)
-                    make.height.equalTo(19)
-                }
-
+            make.top.equalTo(name.snp.bottom).offset(6)
+            make.leading.equalTo(followerCount.snp.trailing).offset(8)
+            make.width.equalTo(57)
+            make.height.equalTo(19)
+        }
+        
         manageProfileButton.snp.makeConstraints { make in
-                    make.top.equalTo(profileImage.snp.bottom).offset(26)
-                    make.leading.equalTo(self.safeAreaLayoutGuide).offset(32.5)
-                    make.width.equalTo(157)
-                    make.height.equalTo(26)
-                }
-
+            make.top.equalTo(profileImage.snp.bottom).offset(26)
+            make.leading.equalTo(self.safeAreaLayoutGuide).offset(32.5)
+            make.width.lessThanOrEqualTo(157)
+            make.height.equalTo(26)
+            make.trailing.equalTo(shareProfileButton.snp.leading).offset(-14)
+        }
+        
         shareProfileButton.snp.makeConstraints { make in
-                    make.top.equalTo(profileImage.snp.bottom).offset(26)
-                    make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-32.5)
-                    make.width.equalTo(157)
-                    make.height.equalTo(26)
-                }
+            make.top.equalTo(profileImage.snp.bottom).offset(26)
+            make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-32.5)
+            make.width.lessThanOrEqualTo(157)
+            make.height.equalTo(26)
+            make.leading.equalTo(manageProfileButton.snp.trailing).offset(14)
+        }
     }
 }

@@ -8,19 +8,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        label.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(80)
-            $0.centerX.equalToSuperview()
-        }
-        
-        button.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(100)
-            $0.centerX.equalToSuperview()
-        }
-        
-        
+        view.backgroundColor = .white
         
     }
     

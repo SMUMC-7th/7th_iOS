@@ -170,45 +170,45 @@ class LoginView: UIView {
         
         NSLayoutConstraint.activate([
             
-            kreamlogo.topAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.topAnchor, constant: 126),
-            kreamlogo.leadingAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 53),
-            kreamlogo.widthAnchor.constraint(lessThanOrEqualToConstant: 287),
-            kreamlogo.heightAnchor.constraint(lessThanOrEqualToConstant: 75),
+            kreamlogo.topAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.topAnchor, constant: 86),
+            kreamlogo.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            kreamlogo.widthAnchor.constraint(equalToConstant: 287),
+            kreamlogo.heightAnchor.constraint(equalToConstant: 75),
             
             emailLabel.topAnchor.constraint(lessThanOrEqualTo: kreamlogo.bottomAnchor, constant: 87),
-            emailLabel.leadingAnchor.constraint(greaterThanOrEqualTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 45),
+            emailLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 45),
             
             emailTextField.topAnchor.constraint(lessThanOrEqualTo: emailLabel.bottomAnchor, constant: 8),
-            emailTextField.leadingAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 45),
-            emailTextField.trailingAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -45),
-            emailTextField.widthAnchor.constraint(equalToConstant: 303),
+            emailTextField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 45),
+            emailTextField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -45),
+            emailTextField.widthAnchor.constraint(lessThanOrEqualToConstant: 303),
             emailTextField.heightAnchor.constraint(equalToConstant: 34),
             
-            passwordLabel.topAnchor.constraint(lessThanOrEqualTo: emailTextField.bottomAnchor, constant: 17),
-            passwordLabel.leadingAnchor.constraint(greaterThanOrEqualTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 45),
+            passwordLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 17),
+            passwordLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 45),
             
             passwordTextField.topAnchor.constraint(lessThanOrEqualTo: passwordLabel.bottomAnchor, constant: 8),
-            passwordTextField.leadingAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 45),
-            passwordTextField.trailingAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -45),
-            passwordTextField.widthAnchor.constraint(equalToConstant: 303),
+            passwordTextField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 45),
+            passwordTextField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -45),
+            passwordTextField.widthAnchor.constraint(lessThanOrEqualToConstant: 303),
             passwordTextField.heightAnchor.constraint(equalToConstant: 34),
             
             loginButton.topAnchor.constraint(lessThanOrEqualTo: passwordTextField.bottomAnchor, constant: 17),
-            loginButton.leadingAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 45),
-            loginButton.trailingAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.trailingAnchor, constant: 45),
-            loginButton.widthAnchor.constraint(equalToConstant: 303),
+            loginButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 45),
+            loginButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -45),
+            loginButton.widthAnchor.constraint(lessThanOrEqualToConstant: 303),
             loginButton.heightAnchor.constraint(equalToConstant: 38),
             
             kakaoLoginButton.topAnchor.constraint(lessThanOrEqualTo: loginButton.bottomAnchor, constant: 87),
-            kakaoLoginButton.leadingAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 45),
+            kakaoLoginButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 45),
             kakaoLoginButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -45),
-            kakaoLoginButton.widthAnchor.constraint(equalToConstant: 298),
+            kakaoLoginButton.widthAnchor.constraint(lessThanOrEqualToConstant: 298),
             kakaoLoginButton.heightAnchor.constraint(equalToConstant: 40),
             
             appleLoginButton.topAnchor.constraint(lessThanOrEqualTo: kakaoLoginButton.bottomAnchor, constant: 22),
-            appleLoginButton.leadingAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 45),
+            appleLoginButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 45),
             appleLoginButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -45),
-            appleLoginButton.widthAnchor.constraint(equalToConstant: 298),
+            appleLoginButton.widthAnchor.constraint(lessThanOrEqualToConstant: 298),
             appleLoginButton.heightAnchor.constraint(equalToConstant: 40)
             ])
     }
