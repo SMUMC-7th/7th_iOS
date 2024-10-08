@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    convenience init?(hex: String) {
+    convenience init?(hex: String) { //? optional
         var hexColor = hex.trimmingCharacters(in: .whitespacesAndNewlines)
         hexColor = hexColor.replacingOccurrences(of: "#", with: "")
 
