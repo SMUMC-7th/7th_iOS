@@ -39,7 +39,6 @@ class SavedTableViewCell: UITableViewCell {
     //MARK: - UI Components
     private lazy var containerView: UIView = {
         let view = UIView()
-        //view.backgroundColor = .ivory
         return view
     }()
     
@@ -73,9 +72,22 @@ class SavedTableViewCell: UITableViewCell {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 10)
+        label.font = UIFont.systemFont(ofSize: 10.5)
         label.textColor = .gray
         label.numberOfLines = 2
+        // *** Create instance of `NSMutableParagraphStyle`
+        let paragraphStyle = NSMutableParagraphStyle()
+        
+        let attributedString = NSMutableAttributedString(string: "Your text")
+
+        // *** set LineSpacing property in points ***
+        paragraphStyle.lineSpacing = 3 // Whatever line spacing you want in points
+
+        // *** Apply attribute to string ***
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+
+        // *** Set Attributed String to your label ***
+        label.attributedText = attributedString
         return label
     }()
     

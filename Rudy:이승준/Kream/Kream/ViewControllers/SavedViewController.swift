@@ -16,7 +16,7 @@ class SavedViewController: UIViewController {
         let view = SavedTableView(frame: .zero, total: data.count)
         view.savedTableView.dataSource = self
         view.savedTableView.delegate = self
-        view.savedTableView.rowHeight = 99
+        //view.savedTableView.rowHeight = 99
         return view
     }()
 
@@ -39,6 +39,7 @@ extension SavedViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configure(with: item)
         return cell
     }
+    
 }
 
 import SwiftUI

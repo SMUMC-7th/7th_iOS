@@ -55,6 +55,34 @@ final class SavedProducts {
                 블라블라블라블라블라
                 """,
                 image: UIImage(named: "Guitar01"),
+                price: 120000, bookmarked: true),Product(name: "아디다스다 신발", desription: "아디다스 처럼 보이지만 아디다스가 아닐지도 모르는 신발 이 신발의 주인은 너야~~",
+                image: UIImage(named: "Shoes02"),
+                price: 120000, bookmarked: true),
+        Product(name: "황제 잠옷", desription: """
+                "어느 나라의 황제가 입었다던 잠옷
+                크리스마스 트리같이 보이는 디자인!
+                """,
+                image: UIImage(named: "Pajama01"),
+                price: 120000000, bookmarked: true),
+        Product(name: "고장난 기타", desription: """
+                블라블라블라블라
+                블라블라블라블라블라
+                """,
+                image: UIImage(named: "Guitar01"),
+                price: 120000, bookmarked: true),Product(name: "아디다스다 신발", desription: "아디다스 처럼 보이지만 아디다스가 아닐지도 모르는 신발 이 신발의 주인은 너야~~",
+                image: UIImage(named: "Shoes02"),
+                price: 120000, bookmarked: true),
+        Product(name: "황제 잠옷", desription: """
+                "어느 나라의 황제가 입었다던 잠옷
+                크리스마스 트리같이 보이는 디자인!
+                """,
+                image: UIImage(named: "Pajama01"),
+                price: 120000000, bookmarked: true),
+        Product(name: "고장난 기타", desription: """
+                블라블라블라블라
+                블라블라블라블라블라
+                """,
+                image: UIImage(named: "Guitar01"),
                 price: 120000, bookmarked: true),
     ]
 }

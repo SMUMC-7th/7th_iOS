@@ -59,6 +59,7 @@ class EditMyProfileViewController: UIViewController {
         let enable = editView.emailTextField.isUserInteractionEnabled
         
         if enable { //
+            editView.emailTextField.text = nil
             editView.emailEditButton.setTitle("확인", for: .normal)
         } else { //
             userDefaults.set(editView.emailTextField.text, forKey: "user_email")
@@ -72,6 +73,7 @@ class EditMyProfileViewController: UIViewController {
         let enable = editView.pwdTextField.isUserInteractionEnabled
         
         if enable {
+            editView.pwdTextField.text = nil
             editView.pwdEditButton.setTitle("확인", for: .normal)
         } else {
             userDefaults.set(editView.pwdTextField.text, forKey: "user_pwd")

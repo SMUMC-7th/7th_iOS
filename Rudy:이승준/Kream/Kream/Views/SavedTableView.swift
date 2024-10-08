@@ -75,7 +75,6 @@ class SavedTableView: UIView {
     public func setTotalNumberLabel(_ number: Int) {
         self.total = number
     }
-        
     
 }
 
