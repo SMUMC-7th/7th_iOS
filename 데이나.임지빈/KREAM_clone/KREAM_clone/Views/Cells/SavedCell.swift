@@ -55,6 +55,7 @@ class SavedCell: UITableViewCell {
         description.font = UIFont.systemFont(ofSize: 9, weight: .light)
         description.textColor = UIColor(hex: "#A1A1A1")
         description.textAlignment = .left
+        description.numberOfLines = 2
         return description
     }()
     
@@ -96,7 +97,6 @@ class SavedCell: UITableViewCell {
             make.top.equalTo(savedNameLabel.snp.bottom).offset(0)
             make.leading.equalTo(savedImageView.snp.trailing).offset(13)
             make.trailing.lessThanOrEqualToSuperview().offset(-142)
-            make.bottom.equalToSuperview().offset(-34)
             make.width.equalTo(153)
             make.height.equalTo(33)
         }

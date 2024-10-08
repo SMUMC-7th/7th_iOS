@@ -26,12 +26,12 @@ class LoginViewController: UIViewController {
         present(viewController, animated: true)
         
         //버튼 이메일, 패스워드 저장
-        guard let text = loginview.emailTextField.text, !text.isEmpty else { return }
-        guard let text = loginview.passwordTextField.text, !text.isEmpty else { return }
+        guard let email = loginview.emailTextField.text, !email.isEmpty else { return }
+        guard let password = loginview.passwordTextField.text, !password.isEmpty else { return }
         
         //모델을 통해 텍스트 저장
-        userInfoModel.saveEmail(text)
-        userInfoModel.savePassword(text)
+        userInfoModel.saveEmail(email)
+        userInfoModel.savePassword(password)
 
     }
         

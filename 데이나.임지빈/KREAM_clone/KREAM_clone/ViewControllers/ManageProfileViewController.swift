@@ -65,11 +65,13 @@ class ManageProfileViewController: UIViewController {
     @objc
     private func userEmailEditButtonTap() {
         if manageprofileview.userEmailEditButton.currentTitle == "변경" {
-            manageprofileview.userEmailTextField.placeholder = " " // 빈거 어케 하는지 모름..
+            manageprofileview.userEmailTextField.placeholder = "새로운 이메일을 입력해주세요!"
+            manageprofileview.userEmailTextField.text = nil
             manageprofileview.userEmailTextField.isUserInteractionEnabled = true
             manageprofileview.userEmailEditButton.setTitle("확인", for: .normal)
         }
         else if manageprofileview.userEmailEditButton.currentTitle == "확인" {
+            manageprofileview.userEmailTextField.isUserInteractionEnabled = false
             guard let text = manageprofileview.userEmailTextField.text, !text.isEmpty else { return }
             userInfoModel.saveEmail(text)
             manageprofileview.userEmailEditButton.setTitle("변경", for: .normal)
@@ -79,12 +81,14 @@ class ManageProfileViewController: UIViewController {
     //변경 버튼 눌렸을때 패스워드 텍스트필드 없어지고 완료 버튼 누르기
     @objc
     private func userPasswordEditButtonTap() {
-        if manageprofileview.userEmailEditButton.currentTitle == "변경" {
-            manageprofileview.userEmailTextField.placeholder = " "
+        if manageprofileview.userPasswordEditButton.currentTitle == "변경" {
+            manageprofileview.userPasswordTextField.placeholder = "새로운 비밀번호를 입력해주세요!"
+            manageprofileview.userEmailTextField.text = nil
             manageprofileview.userPasswordTextField.isUserInteractionEnabled = true
             manageprofileview.userPasswordEditButton.setTitle("확인", for: .normal)
         }
         else if manageprofileview.userPasswordEditButton.currentTitle == "확인" {
+            manageprofileview.userPasswordTextField.isUserInteractionEnabled = false
             guard let text = manageprofileview.userPasswordTextField.text, !text.isEmpty else { return }
             userInfoModel.savePassword(text)
             manageprofileview.userPasswordEditButton.setTitle("변경", for: .normal)
@@ -94,10 +98,6 @@ class ManageProfileViewController: UIViewController {
     
     
     }
-    
-    
-    
-    
     //변경된 텍스트 userdefault에 저장해주기
     //guard let text = manageprofileview.userEmailTextField.text, !text.isEmpty else { return }
     //userInfoModel.saveEmail(text)

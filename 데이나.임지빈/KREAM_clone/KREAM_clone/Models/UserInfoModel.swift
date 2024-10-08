@@ -6,7 +6,7 @@ class UserInfoModel {
     private let emailKey: String = "userEmail"
     private let passwordKey: String = "userPassword"
         
-    /// 유저가 입력한 텍스트 값을 UserDefaults에 저장합니다.
+    /// 유저가 입력한 텍스트 값을 UserDefaults에 저장
     /// - Parameter text: 유저가 입력한 텍스트 값
     public func saveEmail(_ email: String) {
         userDefaults.set(email, forKey: emailKey)
@@ -14,9 +14,8 @@ class UserInfoModel {
     public func savePassword(_ password: String) {
         userDefaults.set(password, forKey: passwordKey)
     }
-
         
-    /// UserDefaults에 저장된 값을 불러옵니다.
+    /// UserDefaults에 저장된 값을 불러옴
     /// - Returns: 저장된 값 String으로 return
     public func loadEmail() -> String? {
         return userDefaults.string(forKey: emailKey)

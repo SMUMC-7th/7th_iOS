@@ -102,6 +102,7 @@ class LoginView: UIView {
         textfield.layer.borderWidth = 1
         textfield.layer.cornerRadius = 15
         textfield.layer.borderColor = UIColor(hex: "#A2A2A2")?.cgColor
+        textfield.isSecureTextEntry = true
         
         textfield.translatesAutoresizingMaskIntoConstraints = false
         return textfield

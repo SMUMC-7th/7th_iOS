@@ -91,9 +91,8 @@ class ManageProfileView: UIView {
         textfield.layer.borderWidth = 1
         textfield.layer.cornerRadius = 10
         textfield.layer.borderColor = UIColor(hex: "#D5D5D5")?.cgColor
-        
+        textfield.isSecureTextEntry = true
         textfield.isUserInteractionEnabled = false
-
         
         return textfield
     }()
