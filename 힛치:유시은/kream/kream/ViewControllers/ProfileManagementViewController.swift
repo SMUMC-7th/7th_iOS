@@ -65,6 +65,7 @@ class ProfileManagementViewController: UIViewController {
         if profilemanagementview.userEmailChangeButton.title(for: .normal) == "변경" {
             profilemanagementview.userEmailChangeButton.setTitle("확인", for: .normal)
             profilemanagementview.userEmailEnterTextField.isUserInteractionEnabled = true
+            profilemanagementview.userEmailEnterTextField.text = nil
         }
         // 확인 -> 변경
         else if profilemanagementview.userEmailChangeButton.title(for: .normal) == "확인" {
@@ -81,6 +82,7 @@ class ProfileManagementViewController: UIViewController {
         if profilemanagementview.userPasswordChangeButton.title(for: .normal) == "변경" {
             profilemanagementview.userPasswordChangeButton.setTitle("확인", for: .normal)
             profilemanagementview.userPasswordEnterTextField.isUserInteractionEnabled = true
+            profilemanagementview.userPasswordEnterTextField.text = nil
         }
         else if profilemanagementview.userPasswordChangeButton.title(for: .normal) == "확인" {
             if let newPassword = profilemanagementview.userPasswordEnterTextField.text, !newPassword.isEmpty {

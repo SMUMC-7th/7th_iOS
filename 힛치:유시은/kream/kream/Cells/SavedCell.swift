@@ -47,6 +47,10 @@ class SavedCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         
+        // 이미지 테두리 둥글게
+        imageView.layer.cornerRadius = 10
+        imageView.clipsToBounds = true
+        
         return imageView
     }()
     
@@ -61,6 +65,7 @@ class SavedCell: UITableViewCell {
         let description = UILabel()
         description.font = UIFont.systemFont(ofSize: 9)
         description.textColor = UIColor.lightGray
+        description.numberOfLines = 4
         
         return description
     }()
@@ -87,8 +92,8 @@ class SavedCell: UITableViewCell {
     
     private func setConstaints() {
         savedImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(13)
-            $0.bottom.equalToSuperview().offset(-14)
+            $0.top.equalToSuperview().offset(26)
+            $0.bottom.equalToSuperview().offset(-21)
             $0.leading.equalToSuperview().offset(13)
             $0.width.height.equalTo(72)
         }
@@ -103,6 +108,7 @@ class SavedCell: UITableViewCell {
             //$0.trailing.equalToSuperview().offset(-142)
             // 자동으로 줄넘김되게 어떻게 하는지
             $0.top.equalTo(savedName.snp.bottom).offset(0)
+            $0.width.equalTo(153)
         }
         
         isSavedButton.snp.makeConstraints {

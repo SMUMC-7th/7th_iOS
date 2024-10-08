@@ -84,7 +84,7 @@ class ProfileManagementView: UIView {
     
     public lazy var userPasswordEnterTextField : UITextField = {
         let textField = UITextField()
-        textField.placeholder = "   새로운 비밀번호를 입력해주세요!"
+        textField.placeholder = "새로운 비밀번호를 입력해주세요!"
         
         textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 11.0, height: 0.0))
         textField.leftViewMode = .always
@@ -170,13 +170,14 @@ class ProfileManagementView: UIView {
         userEmailEnterTextField.snp.makeConstraints {
             $0.top.equalTo(userEmailLabel.snp.bottom).offset(4)
             $0.leading.equalTo(profileInformationLable.snp.leading).offset(0)
-            $0.width.equalTo(282)
+            $0.width.lessThanOrEqualTo(282)
             $0.height.equalTo(32)
         }
         
         userEmailChangeButton.snp.makeConstraints {
             $0.top.equalTo(userEmailEnterTextField.snp.top).offset(0)
             $0.leading.equalTo(userEmailEnterTextField.snp.trailing).offset(9)
+            $0.trailing.equalToSuperview().offset(-17)
             $0.width.equalTo(58)
             $0.height.equalTo(32)
         }
@@ -189,13 +190,14 @@ class ProfileManagementView: UIView {
         userPasswordEnterTextField.snp.makeConstraints {
             $0.top.equalTo(userPasswordLabel.snp.bottom).offset(4)
             $0.leading.equalTo(profileInformationLable.snp.leading).offset(0)
-            $0.width.equalTo(282)
+            $0.width.lessThanOrEqualTo(282)
             $0.height.equalTo(32)
         }
         
         userPasswordChangeButton.snp.makeConstraints {
             $0.top.equalTo(userPasswordEnterTextField.snp.top).offset(0)
             $0.leading.equalTo(userPasswordEnterTextField.snp.trailing).offset(9)
+            $0.trailing.equalToSuperview().offset(-17)
             $0.width.equalTo(58)
             $0.height.equalTo(32)
         }

@@ -19,7 +19,7 @@ class MainSavedViewController: UIViewController {
     private lazy var savedView: SavedView = {
         let view = SavedView()
         view.savedTableView.dataSource = self
-        view.savedTableView.dataSource = self
+        view.savedTableView.delegate = self
         return view
     }()
 }
@@ -40,8 +40,8 @@ extension MainSavedViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-import SwiftUI
-#Preview
-{
-    MainSavedViewController()
-}
+//import SwiftUI
+//#Preview
+//{
+//    MainSavedViewController()
+//}

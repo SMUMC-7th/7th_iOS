@@ -61,6 +61,8 @@ class LoginView: UIView {
         login.layer.cornerRadius = 15 // 객체의 모서리를 둥글게
         login.clipsToBounds = true
         
+        login.textColor = .black
+        
         return login
     }()
     
@@ -80,6 +82,8 @@ class LoginView: UIView {
         
         password.layer.cornerRadius = 15 // 객체의 모서리를 둥글게
         password.clipsToBounds = true
+        
+        password.textColor = .black
         
         return password
     }()
@@ -185,13 +189,16 @@ class LoginView: UIView {
             
             loginButton.topAnchor.constraint(equalTo: passwordEnter.bottomAnchor, constant: 17),
             loginButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            loginButton.widthAnchor.constraint(equalToConstant: 303),
+            loginButton.leadingAnchor.constraint(equalTo: passwordEnter.leadingAnchor, constant: 0),
+            loginButton.widthAnchor.constraint(lessThanOrEqualToConstant: 303),
             loginButton.heightAnchor.constraint(equalToConstant: 38),
+            
             
             kakaoLogin.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 87),
             kakaoLogin.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             kakaoLogin.widthAnchor.constraint(equalToConstant: 298),
             kakaoLogin.heightAnchor.constraint(equalToConstant: 40),
+            kakaoLogin.leadingAnchor.constraint(equalTo: passwordEnter.leadingAnchor, constant: 0),
             
             kakaoLogo.topAnchor.constraint(equalTo: kakaoLogin.topAnchor, constant: 13),
             kakaoLogo.leadingAnchor.constraint(equalTo: kakaoLogin.leadingAnchor, constant: 17),
@@ -207,6 +214,7 @@ class LoginView: UIView {
             appleLogin.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             appleLogin.widthAnchor.constraint(equalToConstant: 298),
             appleLogin.heightAnchor.constraint(equalToConstant: 40),
+            appleLogin.leadingAnchor.constraint(equalTo: passwordEnter.leadingAnchor, constant: 0),
         ])
     }
 }

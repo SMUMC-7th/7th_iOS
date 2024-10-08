@@ -152,14 +152,16 @@ class MyPageView: UIView {
         manageProfileButton.snp.makeConstraints {
             $0.top.equalTo(profileImage.snp.bottom).offset(26)
             $0.leading.equalToSuperview().offset(32.5)
-            $0.width.equalTo(157)
+            $0.width.lessThanOrEqualTo(157)
             $0.height.equalTo(26)
+            $0.trailing.equalTo(shareProfileButton.snp.leading).offset(-14)
         }
         
         shareProfileButton.snp.makeConstraints {
             $0.top.equalTo(profileImage.snp.bottom).offset(26)
+            $0.leading.equalTo(manageProfileButton.snp.trailing).offset(14)
             $0.trailing.equalToSuperview().offset(-32.5)
-            $0.width.equalTo(157)
+            $0.width.equalTo(manageProfileButton)
             $0.height.equalTo(26)
         }
     }
