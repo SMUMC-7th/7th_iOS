@@ -10,12 +10,9 @@ import SnapKit
 
 class EditMyProfileView: UIView {
     
-    var isEmailEditing = true
-    var ispasswordEditing = true
-    
     public lazy var profileImage: UIImageView = {
         let imageVW = UIImageView()
-        let profileImage = UIImage(named: "ProfileImage")
+        let profileImage = UIImage(named: "Ring01")
         imageVW.contentMode = .scaleAspectFit
         imageVW.image = profileImage
         return imageVW
@@ -23,32 +20,33 @@ class EditMyProfileView: UIView {
     
     public lazy var maininfoView: UIView = {
         let view = UIView()
-        //view.backgroundColor = .gray
+        view.backgroundColor = .ivory
         return view
     }()
     
-    public lazy var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "프로필 정보"
         label.font = .systemFont(ofSize: 20, weight: .heavy)
         return label
     }()
     
-    public lazy var emailLabel: UILabel = {
+    private lazy var emailLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 16)
         label.text = "유저 이메일"
-        
         return label
     }()
     
     public lazy var emailTextField: UITextField = {
         let textField = UITextField()
-        textField.text = "rofxnaos@gmail.com"
+        //textField.text = "rofxnaos@gmail.com"
         textField.placeholder = "새로운 이메일을 입력해주세요!"
-        textField.layer.cornerRadius = 5
+        textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor(named: "LoginTextField")?.cgColor
         textField.font = .systemFont(ofSize: 13)
         textField.layer.borderWidth = 1
+        textField.isUserInteractionEnabled = false
         
         let paddingView = UIView(frame: CGRect(x: 0, y: -20, width: 10, height: textField.frame.height))
         textField.leftView = paddingView
@@ -61,7 +59,7 @@ class EditMyProfileView: UIView {
         let button = UIButton()
         button.setTitle("변경", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor(.black).cgColor
@@ -71,18 +69,19 @@ class EditMyProfileView: UIView {
     public lazy var pwdLabel: UILabel = {
         let label = UILabel()
         label.text = "유저 비밀번호"
-        
+        label.font = .systemFont(ofSize: 16)
         return label
     }()
     
     public lazy var pwdTextField: UITextField = {
         let textField = UITextField()
-        textField.text = "rofxnaos@gmail.com"
+        //textField.text = "password"
         textField.placeholder = "새로운 비밀번호를 입력해주세요!"
-        textField.layer.cornerRadius = 5
+        textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor(named: "LoginTextField")?.cgColor
         textField.font = .systemFont(ofSize: 13)
         textField.layer.borderWidth = 1
+        textField.isUserInteractionEnabled = false
         
         let paddingView = UIView(frame: CGRect(x: 0, y: -20, width: 10, height: textField.frame.height))
         textField.leftView = paddingView
@@ -96,7 +95,7 @@ class EditMyProfileView: UIView {
         let button = UIButton()
         button.setTitle("변경", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor(.black).cgColor
@@ -155,14 +154,14 @@ class EditMyProfileView: UIView {
         }
         
         emailTextField.snp.makeConstraints{
-            $0.top.equalTo(emailLabel.snp.bottom).offset(10)
+            $0.top.equalTo(emailLabel.snp.bottom).offset(4)
             $0.leading.equalToSuperview()
-            $0.trailing.equalTo(emailEditButton.snp.leading).offset(-30)
+            $0.trailing.equalTo(emailEditButton.snp.leading).offset(-10)
             $0.height.equalTo(30)
         }
         
         emailEditButton.snp.makeConstraints{
-            $0.top.equalTo(emailLabel.snp.bottom).offset(10)
+            $0.top.equalTo(emailLabel.snp.bottom).offset(4)
             $0.trailing.equalToSuperview()
             $0.width.equalTo(58)
             $0.height.equalTo(30)
@@ -174,14 +173,14 @@ class EditMyProfileView: UIView {
         }
         
         pwdTextField.snp.makeConstraints{
-            $0.top.equalTo(pwdLabel.snp.bottom).offset(10)
+            $0.top.equalTo(pwdLabel.snp.bottom).offset(4)
             $0.leading.equalToSuperview()
-            $0.trailing.equalTo(pwdEditButton.snp.leading).offset(-30)
+            $0.trailing.equalTo(pwdEditButton.snp.leading).offset(-10)
             $0.height.equalTo(30)
         }
         
         pwdEditButton.snp.makeConstraints{
-            $0.top.equalTo(pwdLabel.snp.bottom).offset(10)
+            $0.top.equalTo(pwdLabel.snp.bottom).offset(4)
             $0.trailing.equalToSuperview()
             $0.width.equalTo(58)
             $0.height.equalTo(30)
