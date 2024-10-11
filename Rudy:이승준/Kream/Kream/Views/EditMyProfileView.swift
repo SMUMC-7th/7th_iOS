@@ -20,7 +20,7 @@ class EditMyProfileView: UIView {
     
     public lazy var maininfoView: UIView = {
         let view = UIView()
-        view.backgroundColor = .ivory
+        //view.backgroundColor = .ivory
         return view
     }()
     
