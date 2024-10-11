@@ -25,8 +25,9 @@ class TeenipingViewController: UIViewController {
         rootView.teenipingCollectionView.dataSource = self
     }
 
+    //인덱스값이 업데이트 되었을때 어떤 컴포넌트가 표시할지 처리하는 메서드
     @objc
-    private func segmentedControlValueChanged(segment: UISegmentedControl) {
+    private func segmentedControlValueChanged(segment:  UISegmentedControl) {// 매개변수로 해당 segment 받아오기
         if segment.selectedSegmentIndex == 0 {
             rootView.teenipingCollectionView.isHidden = false
             rootView.emptyLabel.isHidden = true

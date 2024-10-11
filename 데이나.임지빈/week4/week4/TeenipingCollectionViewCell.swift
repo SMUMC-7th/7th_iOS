@@ -1,12 +1,8 @@
-//
-//  TeenipingCollectionViewCell.swift
-//  week4
-//
-//  Created by Dana Lim on 10/10/24.
-//
+
 import UIKit
 
 class TeenipingCollectionViewCell : UICollectionViewCell {
+    //식별자로 사용할 identifier 변수 선언
     static let identifier = "TeenipingCollectionViewCell"
     
     let imageView: UIImageView = {
@@ -17,6 +13,7 @@ class TeenipingCollectionViewCell : UICollectionViewCell {
         return imageview
     }()
     
+    //이름 label
     let titleLabel : UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 10,weight: .semibold)
