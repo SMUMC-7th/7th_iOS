@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditMyProfileViewController: UIViewController {
+class EditMyProfileViewController: UIViewController, UINavigationControllerDelegate {
     
     let userDefaults = UserDefaults.standard
     
@@ -23,6 +23,8 @@ class EditMyProfileViewController: UIViewController {
         super.viewDidLoad()
         self.loadUserDefaults()
         self.view = editView
+        editView.imagePickerView.delegate = self
+        editView.profileImageButton.addTarget(self, action: #selector(pickerViewPopUp), for: .touchUpInside)
         editView.emailEditButton.addTarget(self, action: #selector(editingEmailToggle), for: .touchUpInside)
         editView.pwdEditButton.addTarget(self, action: #selector(editingPwdToggle), for: .touchUpInside)
         setupNavigationBar()
@@ -82,6 +84,33 @@ class EditMyProfileViewController: UIViewController {
     }
     
     public func setProfileImage(image : UIImage) {
-        editView.profileImage.image = image
+        editView.profileImageButton.setImage(image, for: .normal)
     }
+}
+
+extension EditMyProfileViewController: UIImagePickerControllerDelegate {
+    
+    // MARK: - Controller Did Cancle & Return Picture
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("Canceled without Selection")
+        self.dismiss(animated: false) { () in
+            
+        }
+    }
+    
+    // MARK: - Image Selected
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("Image Selected")
+        picker.dismiss(animated: false) { () in
+            let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+            self.editView.profileImageButton.setImage(image, for: .normal)
+        }
+    }
+    
+    // ImageProfile Button을 누르면 ImagePickerView가 나옴
+    @objc
+    private func pickerViewPopUp() {
+        self.present(editView.imagePickerView, animated: true)
+    }
+    
 }

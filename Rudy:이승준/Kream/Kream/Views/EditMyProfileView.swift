@@ -10,12 +10,22 @@ import SnapKit
 
 class EditMyProfileView: UIView {
     
-    public lazy var profileImage: UIImageView = {
-        let imageVW = UIImageView()
+    public lazy var imagePickerView: UIImagePickerController = {
+        /// 이미지 피커 컨트롤러 생성
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary   /// 이미지 소스로 사진 라이브러리 선택
+        picker.allowsEditing = true         /// 이미지 편집 가능 X
+        return picker
+    }()
+    
+    public lazy var profileImageButton: UIButton = {
+        let button = UIButton()
+        // Setting Image
         let profileImage = UIImage(named: "Ring01")
-        imageVW.contentMode = .scaleAspectFit
-        imageVW.image = profileImage
-        return imageVW
+        button.setImage(profileImage, for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        
+        return button
     }()
     
     public lazy var maininfoView: UIView = {
@@ -116,8 +126,9 @@ class EditMyProfileView: UIView {
     }
     
     private func addComponents() {
-        self.addSubview(profileImage)
+        self.addSubview(profileImageButton)
         self.addSubview(maininfoView)
+        
         maininfoView.addSubview(titleLabel)
         
         maininfoView.addSubview(emailLabel)
@@ -129,7 +140,7 @@ class EditMyProfileView: UIView {
         maininfoView.addSubview(pwdEditButton)
 
         
-        profileImage.snp.makeConstraints{
+        profileImageButton.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(120)
             $0.height.equalTo(90)
@@ -137,7 +148,7 @@ class EditMyProfileView: UIView {
         }
         
         maininfoView.snp.makeConstraints{
-            $0.top.equalTo(profileImage.snp.bottom).offset(30)
+            $0.top.equalTo(profileImageButton.snp.bottom).offset(30)
             $0.leading.equalToSuperview().offset(30)
             $0.trailing.equalToSuperview().offset(-30)
             $0.height.equalTo(250)
