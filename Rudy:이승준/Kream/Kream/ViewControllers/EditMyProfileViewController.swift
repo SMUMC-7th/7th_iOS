@@ -11,6 +11,8 @@ class EditMyProfileViewController: UIViewController, UINavigationControllerDeleg
     
     let userDefaults = UserDefaults.standard
     
+    var imageEditCompletionHandler: ((UIImage) -> Void)?
+    
     var usernemail: String = ""
     var userpassword: String = ""
     
@@ -100,10 +102,12 @@ extension EditMyProfileViewController: UIImagePickerControllerDelegate {
     
     // MARK: - Image Selected
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        print("Image Selected")
         picker.dismiss(animated: false) { () in
-            let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
-            self.editView.profileImageButton.setImage(image, for: .normal)
+            if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+                print("Image Selected")
+                self.editView.profileImageButton.setImage(image, for: .normal)
+                self.imageEditCompletionHandler?(image)
+            }
         }
     }
     

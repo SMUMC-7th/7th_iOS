@@ -16,8 +16,17 @@ class MyProfileViewController: UIViewController {
     @objc
     private func pushEditProfileView() {
         let editView = EditMyProfileViewController()
+        
+        editView.imageEditCompletionHandler = { [weak self] newImage in
+            self?.myProfileView.profileImage.image = newImage
+        }
+        
         editView.setProfileImage(image: myProfileView.profileImage.image!)
         navigationController?.pushViewController(editView, animated: true)
+    }
+    
+    private func setProfileImage(image: UIImage) {
+        myProfileView.profileImage.image = image
     }
 
 }

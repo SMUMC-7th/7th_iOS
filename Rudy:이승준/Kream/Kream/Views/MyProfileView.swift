@@ -15,6 +15,7 @@ class MyProfileView: UIView {
     
     private lazy var mainInfoView: UIView = {
         let view = UIView()
+        //view.backgroundColor = .lightGray
         return view
     }()
     
@@ -43,13 +44,16 @@ class MyProfileView: UIView {
     // MARK: - Profile image, name, ...
     private lazy var infoSubView: UIView = {
         let view = UIView()
+        //view.backgroundColor = .gray
         return view
     }()
     
     public lazy var profileImage: UIImageView = {
         let imageVW = UIImageView()
         let profileImage = UIImage(named: "ProfileImage")
-        imageVW.contentMode = .scaleAspectFit
+        imageVW.contentMode = .scaleAspectFill
+        imageVW.clipsToBounds = true
+        imageVW.layer.cornerRadius = 45
         imageVW.image = profileImage
         return imageVW
     }()
@@ -131,11 +135,11 @@ class MyProfileView: UIView {
         mainInfoView.addSubview(shareProfileButton)
         
         settingButton.snp.makeConstraints{
-            $0.leading.equalToSuperview()
+            $0.top.leading.equalToSuperview()
         }
         
         cameraButton.snp.makeConstraints{
-            $0.trailing.equalToSuperview()
+            $0.top.trailing.equalToSuperview()
         }
         
         infoSubView.snp.makeConstraints{
@@ -145,18 +149,18 @@ class MyProfileView: UIView {
         }
         
         profileImage.snp.makeConstraints{
-            $0.leading.equalTo(infoSubView.snp.leading).offset(-45)
-            $0.height.equalTo(90)
-            $0.height.equalTo(90)
+            $0.leading.equalTo(infoSubView.snp.leading)
+            $0.centerY.equalToSuperview()
+            $0.height.width.equalTo(90)
         }
         
         userNicknameLabel.snp.makeConstraints{
-            $0.leading.equalTo(profileImage.snp.trailing).offset(-20)
+            $0.leading.equalTo(profileImage.snp.trailing).offset(20)
             $0.top.equalToSuperview().offset(20)
         }
         
         followerLabel.snp.makeConstraints{
-            $0.leading.equalTo(profileImage.snp.trailing).offset(-20)
+            $0.leading.equalTo(profileImage.snp.trailing).offset(20)
             $0.top.equalTo(userNicknameLabel.snp.bottom).offset(10)
         }
         

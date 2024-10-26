@@ -23,7 +23,8 @@ class EditMyProfileView: UIView {
         // Setting Image
         let profileImage = UIImage(named: "Ring01")
         button.setImage(profileImage, for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
+        button.imageView?.contentMode = .scaleAspectFill
+        button.imageView?.layer.cornerRadius = 45
         
         return button
     }()
@@ -143,8 +144,7 @@ class EditMyProfileView: UIView {
         profileImageButton.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(120)
-            $0.height.equalTo(90)
-            $0.width.equalTo(90)
+            $0.height.width.equalTo(90)
         }
         
         maininfoView.snp.makeConstraints{
