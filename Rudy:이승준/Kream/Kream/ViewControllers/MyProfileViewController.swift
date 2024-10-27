@@ -17,6 +17,8 @@ class MyProfileViewController: UIViewController {
     private func pushEditProfileView() {
         let editView = EditMyProfileViewController()
         
+        // EditMyProfileViewController의 CompletionHanlder를 구현
+        //EditMyProfileViewController에서 COmpletionHandler를 호출하면 여기서 구현한 함수가 실행됨
         editView.imageEditCompletionHandler = { [weak self] newImage in
             self?.myProfileView.profileImage.image = newImage
         }

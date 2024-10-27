@@ -103,7 +103,8 @@ class MyProfileView: UIView {
         button.layer.borderColor = UIColor(named: "SocialLogin")?.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 10
-        return button    }()
+        return button
+    }()
         
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -44,7 +44,8 @@ class TeenipingView: UIView {
             $0.backgroundColor = .clear
             $0.isScrollEnabled = false
             $0.register(TeenipingCollectionViewCell.self, forCellWithReuseIdentifier: TeenipingCollectionViewCell.identifier)
-        }
+    }
+    
     private let divideLine: UIView = {
         let view = UIView()
         view.backgroundColor = .black

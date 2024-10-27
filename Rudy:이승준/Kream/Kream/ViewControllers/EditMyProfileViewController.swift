@@ -11,6 +11,7 @@ class EditMyProfileViewController: UIViewController, UINavigationControllerDeleg
     
     let userDefaults = UserDefaults.standard
     
+    // UIImage 를 매개변수로 받고, 반환하는 값은 없는 자료형의 변수
     var imageEditCompletionHandler: ((UIImage) -> Void)?
     
     var usernemail: String = ""
@@ -106,6 +107,7 @@ extension EditMyProfileViewController: UIImagePickerControllerDelegate {
             if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
                 print("Image Selected")
                 self.editView.profileImageButton.setImage(image, for: .normal)
+                // 이미지 선택 이후, 클로저 변수를 호출, 자료형에 맞게 이미지를 매개변수로 전달, 이 함수를 호출한 곳에서 자신들이 지정한 동작들이 수행됨. EditViewController는 구현된 함수는 모른다. 알빠아님. 호출한 자기들 입맛에 맞게 고쳐서 쓰겠지.
                 self.imageEditCompletionHandler?(image)
             }
         }
