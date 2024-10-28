@@ -37,7 +37,7 @@ class MyPageView: UIView {
         return button
     }()
     
-    private lazy var profileImage : UIImageView = {
+    public lazy var profileImage : UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "profileImage")
         image.contentMode = .scaleAspectFit // 중요함 나중에 공부하기

@@ -67,4 +67,9 @@ extension TeenipingViewController: UICollectionViewDataSource {
     
     
 }
+import SwiftUI
+#Preview
+{
+    TeenipingViewController()
+}
 

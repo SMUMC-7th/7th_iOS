@@ -36,7 +36,6 @@ class TeenipingView: UIView {
     
     let teenipingCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
         $0.estimatedItemSize = .init(width: 162, height: 144)
-        // height 120아닌가
         $0.minimumInteritemSpacing = 12
     }).then {
         $0.backgroundColor = .clear

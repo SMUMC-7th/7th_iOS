@@ -8,6 +8,8 @@
 import UIKit
  
 class ProfileManagementViewController: UIViewController {
+    // 데이터를 받을 public 변수 선언
+    public var receivedData: String?
     
     private let loginUserDefaultsModel = LoginUserDefaultsModel()
     
@@ -56,6 +58,14 @@ class ProfileManagementViewController: UIViewController {
     
     @objc
     private func backButtonDidTap() {
+        // 클로저를 설정하여 MyPageView(MainMyViewController)에서 데이터를 전달받음
+        let mainMyVC = MainMyViewController()
+        
+        mainMyVC.completionHandler = { [weak self] data in
+            (self?.view as? MyPageView)?.profileImage.image = data
+        }
+        
+        // 네비게이션 화면 전환
         navigationController?.popViewController(animated: true)
     }
     

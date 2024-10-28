@@ -3,4 +3,140 @@
    uuid = "012B10CD-68E8-49FB-809E-4975DAD187DB"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CC4DB314-BA02-4621-977A-03D1F7D081A6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kream/ViewControllers/ProfileManagementViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "ProfileManagementViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7664225F-FE33-4273-863E-6CE8961530DC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kream/ViewControllers/ProfileManagementViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "ProfileManagementViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "7664225F-FE33-4273-863E-6CE8961530DC - 629102748f47adcb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kream.ProfileManagementViewController.receivedData.getter : Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "kream.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yse/Desktop/2024-2/UMC_iOS/%E1%84%92%E1%85%B5%E1%86%BA%E1%84%8E%E1%85%B5:%E1%84%8B%E1%85%B2%E1%84%89%E1%85%B5%E1%84%8B%E1%85%B3%E1%86%AB/kream/kream/ViewControllers/ProfileManagementViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "7664225F-FE33-4273-863E-6CE8961530DC - b5fcd1b661f97b4b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kream.ProfileManagementViewController.receivedData.setter : Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "kream.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yse/Desktop/2024-2/UMC_iOS/%E1%84%92%E1%85%B5%E1%86%BA%E1%84%8E%E1%85%B5:%E1%84%8B%E1%85%B2%E1%84%89%E1%85%B5%E1%84%8B%E1%85%B3%E1%86%AB/kream/kream/ViewControllers/ProfileManagementViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12">
+               </Location>
+               <Location
+                  uuid = "7664225F-FE33-4273-863E-6CE8961530DC - b4595aee7858475a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kream.ProfileManagementViewController.receivedData.modify : Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "kream.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yse/Desktop/2024-2/UMC_iOS/%E1%84%92%E1%85%B5%E1%86%BA%E1%84%8E%E1%85%B5:%E1%84%8B%E1%85%B2%E1%84%89%E1%85%B5%E1%84%8B%E1%85%B3%E1%86%AB/kream/kream/ViewControllers/ProfileManagementViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12">
+               </Location>
+               <Location
+                  uuid = "7664225F-FE33-4273-863E-6CE8961530DC - 540b5b9e35ae0d66"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kream.ProfileManagementViewController.receivedData.modify : Swift.Optional&lt;Swift.String&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "kream.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "7664225F-FE33-4273-863E-6CE8961530DC - 8c793c711aed6a0d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kream.ProfileManagementViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; kream.ProfileManagementViewController"
+                  moduleName = "kream.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yse/Desktop/2024-2/UMC_iOS/%E1%84%92%E1%85%B5%E1%86%BA%E1%84%8E%E1%85%B5:%E1%84%8B%E1%85%B2%E1%84%89%E1%85%B5%E1%84%8B%E1%85%B3%E1%86%AB/kream/kream/ViewControllers/ProfileManagementViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12">
+               </Location>
+               <Location
+                  uuid = "7664225F-FE33-4273-863E-6CE8961530DC - 51838289823794e0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kream.ProfileManagementViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;kream.ProfileManagementViewController&gt;"
+                  moduleName = "kream.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yse/Desktop/2024-2/UMC_iOS/%E1%84%92%E1%85%B5%E1%86%BA%E1%84%8E%E1%85%B5:%E1%84%8B%E1%85%B2%E1%84%89%E1%85%B5%E1%84%8B%E1%85%B3%E1%86%AB/kream/kream/ViewControllers/ProfileManagementViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4EE3CC94-32C7-4D32-B219-F3A761015EFD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kream/Views/MainHomeView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "addComponents()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
