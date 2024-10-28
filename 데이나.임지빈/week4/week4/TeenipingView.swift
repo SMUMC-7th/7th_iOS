@@ -28,7 +28,6 @@ class TeenipingView: UIView {
         return control
     }()
 
-    
     //teenipingcollectionview 속성 구현
     let teenipingCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()

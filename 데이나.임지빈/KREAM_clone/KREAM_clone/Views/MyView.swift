@@ -31,8 +31,6 @@ class MyView: UIView {
     
     public var profileImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "ProfileImage")
-        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
