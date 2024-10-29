@@ -21,6 +21,6 @@ class MyViewController: UIViewController {
         navigationController?.pushViewController(viewController, animated: true)
         
         //myview의 프로필이미지를 MangageProfileViewController의 변수에 전달
-        viewController.receivedProfileImage = myview.profileImage.image
+        //viewController.receivedProfileImage = myview.profileImage.image
     }
 }
