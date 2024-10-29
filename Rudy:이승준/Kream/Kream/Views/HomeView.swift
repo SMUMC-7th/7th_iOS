@@ -13,7 +13,6 @@ class HomeView: UIView {
     //MARK: - Top Area : Search & Notification
     private var topViewContainer: UIView = {
         let view = UIView()
-        //view.backgroundColor = .yellow
         return view
     }()
     
@@ -37,10 +36,9 @@ class HomeView: UIView {
         return button
     }()
     
-    //MARK: - SegmentControl
+    //MARK: - SegmentControl, Underline
     let segmentedControl: UISegmentedControl = {
         let seg = UISegmentedControl(items: ["추천", "랭킹", "발매정보", "럭셔리", "남성", "여성"])
-        // 텍스트 스타일 설정
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 8 // 원하는 줄 간격 설정
         paragraphStyle.alignment = .center // 텍스트 정렬 설정
@@ -50,6 +48,7 @@ class HomeView: UIView {
         seg.setBackgroundImage(UIImage(), for: .selected, barMetrics: .default)
         seg.setBackgroundImage(UIImage(), for: .highlighted, barMetrics: .default)
         seg.setDividerImage(UIImage(), forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
+        seg.apportionsSegmentWidthsByContent = true
         
         seg.selectedSegmentIndex = 0
         
@@ -57,8 +56,8 @@ class HomeView: UIView {
         seg.setTitleTextAttributes([
             NSAttributedString.Key.foregroundColor: UIColor.black,
                 .font: UIFont.systemFont(ofSize: 16, weight: .light),
-            .kern: -2,
-            .paragraphStyle: paragraphStyle,
+                .kern: -2,
+                .paragraphStyle: paragraphStyle,
             ],
             for: .normal
         )
@@ -66,10 +65,10 @@ class HomeView: UIView {
         // 선택된 상태 텍스트 속성 설정 (볼드체 및 밑줄 추가)
         seg.setTitleTextAttributes([
             NSAttributedString.Key.foregroundColor: UIColor.black,
-            .font: UIFont.systemFont(ofSize: 16, weight: .bold),
-            .kern: -2,
-            .paragraphStyle: paragraphStyle,
-            .underlineStyle: NSUnderlineStyle.single.rawValue, // 밑줄 추가
+                .font: UIFont.systemFont(ofSize: 16, weight: .bold),
+                .kern: -2,
+                .paragraphStyle: paragraphStyle,
+                //.underlineStyle: NSUnderlineStyle.single.rawValue, // 밑줄 추가
             ],
             for: .selected
         )
@@ -80,8 +79,14 @@ class HomeView: UIView {
         return seg
     }()
     
+    public var underLine: UIView = {
+        let line = UIView()
+        line.backgroundColor = .black
+        return line
+    }()
+    
     // MARK: RecomendationView : Ad, CategoryCollectionViews
-    private var recomendationViewContainer: UIView = {
+    public var recomendationViewContainer: UIView = {
         let view = UIView()
         //view.backgroundColor = .darkGray
         return view
@@ -128,10 +133,7 @@ class HomeView: UIView {
     }
     
     private func addComponents() {
-        self.addSubview(topViewContainer)
-        topViewContainer.addSubview(searchBarButton)
-        topViewContainer.addSubview(alarmButton)
-        
+                
         self.addSubview(segmentedControl)
         self.addSubview(recomendationViewContainer)
         
@@ -140,6 +142,10 @@ class HomeView: UIView {
         recomendationViewContainer.addSubview(collectionViewBottomLine)
         
         self.addSubview(tabBarline)
+        self.addSubview(topViewContainer)
+        
+        topViewContainer.addSubview(searchBarButton)
+        topViewContainer.addSubview(alarmButton)
         
         topViewContainer.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(60)
@@ -155,8 +161,11 @@ class HomeView: UIView {
             make.top.bottom.equalToSuperview().inset(8)
             make.height.width.equalTo(24)
             make.leading.equalTo(searchBarButton.snp.trailing).offset(10)
-            make.trailing.equalTo(-3)
+            make.trailing.equalTo(0)
         }
+        
+        self.addSubview(segmentedControl)
+        self.addSubview(underLine)
         
         segmentedControl.snp.makeConstraints { make in
             make.top.equalTo(topViewContainer.snp.bottom).offset(10)
@@ -164,8 +173,21 @@ class HomeView: UIView {
             make.height.equalTo(27)
         }
         
+        underLine.snp.makeConstraints { make in
+            make.top.equalTo(segmentedControl.snp.bottom)
+            make.height.equalTo(2)
+            make.leading.equalTo(14.66) // 확인용, 지워야됨
+            make.width.equalTo(25.68)
+        }
+        
+        self.addSubview(recomendationViewContainer)
+        
+        recomendationViewContainer.addSubview(adImageView)
+        recomendationViewContainer.addSubview(collectionView)
+        recomendationViewContainer.addSubview(collectionViewBottomLine)
+        
         recomendationViewContainer.snp.makeConstraints { make in
-            make.top.equalTo(segmentedControl.snp.bottom).inset(-8)
+            make.top.equalTo(underLine.snp.bottom).inset(-1)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-5)
         }
@@ -187,7 +209,6 @@ class HomeView: UIView {
             make.trailing.leading.equalToSuperview()
             make.height.equalTo(2)
             make.top.equalTo(collectionView.snp.bottom).offset(40)
-            //make.bottom.equalTo(tabBarline.snp.top).offset(-30)
         }
         
         tabBarline.snp.makeConstraints { make in
@@ -196,6 +217,16 @@ class HomeView: UIView {
             make.height.equalTo(1)
         }
         
+    }
+    
+    public func setUnderline(leadingDistance: CGFloat, textWidth: CGFloat) {
+        underLine.snp.removeConstraints()
+        underLine.snp.makeConstraints { make in
+            make.top.equalTo(segmentedControl.snp.bottom)
+            make.height.equalTo(2)
+            make.leading.equalTo(leadingDistance)
+            make.width.equalTo(textWidth)
+        }
     }
     
     required init?(coder: NSCoder) {
