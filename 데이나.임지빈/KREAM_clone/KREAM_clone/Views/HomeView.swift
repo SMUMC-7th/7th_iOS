@@ -19,6 +19,8 @@ class HomeView: UIView {
         textField.layer.cornerRadius = 12
         textField.layer.backgroundColor = UIColor(hex: "#F5F5F5")?.cgColor
         textField.textColor = UIColor(hex: "#B6B6B6")
+        textField.font = UIFont.systemFont(ofSize: 13.5)
+        //placeholder padding 넣는법
         return textField
     }()
     
@@ -92,11 +94,11 @@ class HomeView: UIView {
         self.addSubview(divideLine)
         
         searchTextField.snp.makeConstraints { make in
-            make.top.equalTo(self.safeAreaLayoutGuide).offset(6)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-55)
             make.width.equalTo(303)
             make.height.equalTo(40)
+            //make.top.equalTo(self.safeAreaLayoutGuide).inset(6)//엥 왜 이거 없으니까 제대로 나옴 이거 있었을때 height가 안바꼇음
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().inset(55)
         }
         
         alertButton.snp.makeConstraints { make in
@@ -116,7 +118,7 @@ class HomeView: UIView {
         }
         
         adImage.snp.makeConstraints{ make in
-            make.top.equalTo(segmentedControl.snp.bottom).offset(0)
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(89)
             make.height.equalTo(361)
             make.centerX.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(0)

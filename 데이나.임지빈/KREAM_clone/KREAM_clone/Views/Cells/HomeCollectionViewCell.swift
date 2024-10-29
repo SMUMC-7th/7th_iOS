@@ -39,8 +39,10 @@ class HomeCollectionViewCell : UICollectionViewCell {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(5)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(imageView.snp.bottom).offset(6)
+            make.height.equalTo(14)
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(0)
         }
     }
 }

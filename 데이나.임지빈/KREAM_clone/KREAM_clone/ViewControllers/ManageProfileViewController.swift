@@ -9,11 +9,6 @@ class ManageProfileViewController: UIViewController {
 
         manageprofileview.userEmailEditButton.addTarget(self, action: #selector(userEmailEditButtonTap), for: .touchUpInside)
         manageprofileview.userPasswordEditButton.addTarget(self, action: #selector(userPasswordEditButtonTap), for: .touchUpInside)
-        
-        //전달받은 데이터를 표시
-        if let profileimage = receivedProfileImage {
-            manageprofileview.profileImage.image = profileimage
-        }
     }
     
     private var manageprofileview: ManageProfileView = {
@@ -94,13 +89,4 @@ class ManageProfileViewController: UIViewController {
             manageprofileview.userPasswordEditButton.setTitle("변경", for: .normal)
         }
     }
-    
-    
-    
-    }
-    //변경된 텍스트 userdefault에 저장해주기
-    //guard let text = manageprofileview.userEmailTextField.text, !text.isEmpty else { return }
-    //userInfoModel.saveEmail(text)
-    
-    //guard let text = manageprofileview.userPasswordTextField.text, !text.isEmpty else { return }
-    //userInfoModel.savePassword(text)
+}
