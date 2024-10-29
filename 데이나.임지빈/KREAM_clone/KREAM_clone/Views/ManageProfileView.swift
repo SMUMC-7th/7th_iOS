@@ -12,10 +12,17 @@ class ManageProfileView: UIView {
     }
     
     
-    public var profileImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    public var profileImageButton: UIButton = {
+        let button = UIButton()
+        let config = UIImage.SymbolConfiguration(pointSize: 100)
+        let image = UIImage(systemName: "person.crop.circle.badge.plus", withConfiguration: config)
+        
+        button.setImage(image, for: .normal)
+        button.layer.cornerRadius = 45
+        button.layer.masksToBounds = true
+        
+        button.tintColor = .black
+        return button
     }()
     
     public lazy var profileInfoLabel: UILabel = {
@@ -30,7 +37,6 @@ class ManageProfileView: UIView {
         let label = UILabel()
         label.text = "유저 이메일"
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -114,7 +120,7 @@ class ManageProfileView: UIView {
     
     
     public func addComponent() {
-        self.addSubview(profileImage)
+        self.addSubview(profileImageButton)
         self.addSubview(profileInfoLabel)
         self.addSubview(userEmailLabel)
         self.addSubview(userEmailTextField)
@@ -123,14 +129,14 @@ class ManageProfileView: UIView {
         self.addSubview(userPasswordTextField)
         self.addSubview(userPasswordEditButton)
         
-        profileImage.snp.makeConstraints { make in
+        profileImageButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview() // 수평 중앙 정렬
             make.top.equalToSuperview().offset(144)
             make.width.height.equalTo(90) //크기 설정
         }
         profileInfoLabel.snp.makeConstraints { make in
             make.leading.equalTo(self.safeAreaLayoutGuide).offset(27)
-            make.top.equalTo(profileImage.snp.bottom).offset(20)
+            make.top.equalTo(profileImageButton.snp.bottom).offset(20)
         }
         userEmailLabel.snp.makeConstraints { make in
             make.top.equalTo(profileInfoLabel.snp.bottom).offset(23)

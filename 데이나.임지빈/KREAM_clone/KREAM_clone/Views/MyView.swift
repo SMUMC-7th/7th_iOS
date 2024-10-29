@@ -31,6 +31,8 @@ class MyView: UIView {
     
     public var profileImage: UIImageView = {
         let imageView = UIImageView()
+        imageView.layer.cornerRadius = 45
+        imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

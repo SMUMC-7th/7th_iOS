@@ -1,6 +1,6 @@
 import UIKit
 
-class ManageProfileViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate {
+class ManageProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = manageprofileview
@@ -9,32 +9,17 @@ class ManageProfileViewController: UIViewController, UINavigationControllerDeleg
 
         manageprofileview.userEmailEditButton.addTarget(self, action: #selector(userEmailEditButtonTap), for: .touchUpInside)
         manageprofileview.userPasswordEditButton.addTarget(self, action: #selector(userPasswordEditButtonTap), for: .touchUpInside)
-        //profileimage 눌렀을때 pickprofileimage 함수 호출시키기
-        manageprofileview.profileImage.addTarget(self, action: #selector(pickProfileImage),for: .touchUpInside)
-        
-        
-
+        manageprofileview.profileImageButton.addTarget(self, action: #selector(pickProfileImage), for: .touchUpInside)
     }
+    
+    //
+    var imageEditCompletionHandler: ((UIImage) -> Void)?
     
     private var manageprofileview: ManageProfileView = {
         let view = ManageProfileView()
         return view
     }()
   
-    //
-    @objc
-    func pickProfileImage(_ sender:Any) {
-        //imagepickercontroller 생성
-        let picker = UIImagePickerController()
-        picker.sourceType = .photoLibrary //이미지 소스로 라이브러리
-        picker.allowsEditing = true //이미지 편집 기능
-        picker.delegate = self
-        
-        self.present(picker,animated:false) //image picker 컨트롤러 실행
-    }
-    
-    
-    
     
     private let userInfoModel = UserInfoModel()
     
@@ -108,7 +93,7 @@ class ManageProfileViewController: UIViewController, UINavigationControllerDeleg
     }
 }
 
-extension ManageProfileViewController: UIImagePickerControllerDelegate {
+extension ManageProfileViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     //이미지 피커에서 이미지를 선택하지 않고 취소했을 때 호출되는 메소드
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
@@ -116,11 +101,24 @@ extension ManageProfileViewController: UIImagePickerControllerDelegate {
     
     //이미지 피커에서 이미지 선택했을때 호출되는 메서드
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let editedImage = info[.editedImage] as? UIImage {
-                manageprofileview.profileImage.image = editedImage
-            } else if let originalImage = info[.originalImage] as? UIImage {
-                manageprofileview.profileImage.image = originalImage
+        if let editedImage = info[.editedImage] as? UIImage {
+                manageprofileview.profileImageButton.setImage(editedImage, for: .normal)
+                imageEditCompletionHandler?(editedImage)
+                
+        } else if let originalImage = info[.originalImage] as? UIImage {
+                manageprofileview.profileImageButton.setImage(originalImage, for: .normal)
             }
             picker.dismiss(animated: true)
         }
+    
+    //
+    @objc
+    func pickProfileImage(_ sender:Any) {
+        //imagepickercontroller 생성
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary //이미지 소스로 라이브러리
+        picker.allowsEditing = true //이미지 편집 기능
+        picker.delegate = self 
+        self.present(picker,animated:true, completion: nil) //image picker 컨트롤러 실행
+    }
 }

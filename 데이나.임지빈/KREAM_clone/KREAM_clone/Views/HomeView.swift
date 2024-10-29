@@ -21,6 +21,9 @@ class HomeView: UIView {
         textField.textColor = UIColor(hex: "#B6B6B6")
         textField.font = UIFont.systemFont(ofSize: 13.5)
         //placeholder padding 넣는법
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: textField.frame.height))
+            textField.leftView = paddingView
+            textField.leftViewMode = .always
         return textField
     }()
     
@@ -38,6 +41,7 @@ class HomeView: UIView {
         segmentedcontrol.setBackgroundImage(UIImage(), for: .selected, barMetrics: .default)
         segmentedcontrol.setBackgroundImage(UIImage(), for: .highlighted, barMetrics: .default)
         segmentedcontrol.setDividerImage(UIImage(), forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
+        segmentedcontrol.apportionsSegmentWidthsByContent = true //글자 너비 맞춰주기
         
         segmentedcontrol.setTitleTextAttributes(
                     [

@@ -19,8 +19,9 @@ class MyViewController: UIViewController {
     private func ManageProfileViewButtonTap() {
         let viewController = ManageProfileViewController()
         navigationController?.pushViewController(viewController, animated: true)
-        
-        //myview의 프로필이미지를 MangageProfileViewController의 변수에 전달
-        //viewController.receivedProfileImage = myview.profileImage.image
+        // closure로 manageprofileviewcontroller 반환된값 이미지로 반환
+        viewController.imageEditCompletionHandler = { [weak self] newImage in
+            self?.myview.profileImage.image = newImage
+        }
     }
 }

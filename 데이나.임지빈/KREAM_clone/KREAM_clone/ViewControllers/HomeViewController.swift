@@ -10,7 +10,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
         setUpDelegate()
     }
     
-    //
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //collectionview에 몇개의 데이터가 들어갈지 반환해주는거 model dummy에 있는ㄱ ㅐ갯수만큼
         return HomeModel.dummy().count
