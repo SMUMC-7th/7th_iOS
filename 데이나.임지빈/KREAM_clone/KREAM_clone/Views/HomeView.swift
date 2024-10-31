@@ -13,6 +13,20 @@ class HomeView: UIView {
             fatalError("init(coder:) has not been implemented")
         }
     
+    //스크롤뷰 생성
+    private lazy var scrollView: UIScrollView = {
+        let scrollview = UIScrollView()
+        scrollview.showsVerticalScrollIndicator = true
+        scrollview.showsHorizontalScrollIndicator = false
+        scrollview.contentSize = CGSize(width: 374, height: 1400) //이거 안해주면 scroll 안됨
+        return scrollview
+    }()
+    
+    private lazy var contentView: UIView = {
+            let view = UIView()
+            return view
+    }()
+    
     private lazy var searchTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "브랜드, 상품, 프로필, 태그 등"
@@ -83,19 +97,102 @@ class HomeView: UIView {
         return homeCollectionView
     }()
     
+    private lazy var JustDroppedLabel : UILabel = {
+        let label = UILabel()
+        label.text = "Just Dropped"
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        return label
+    }()
+    
+    private lazy var JustDroppedDescriptionLabel : UILabel = {
+        let label = UILabel()
+        label.text = "발매 상품"
+        label.textColor = UIColor(hex: "#878787")
+        label.font = .systemFont(ofSize: 13, weight: .light)
+        return label
+    }()
+    
+    let justDroppedCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = CGSize(width: 142, height: 237)
+        layout.minimumLineSpacing = 8
+        layout.scrollDirection = .horizontal
+        
+        let collectionview = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionview.backgroundColor = .clear
+        collectionview.isScrollEnabled = true
+        collectionview.register(JustDroppedCollectionViewCell.self, forCellWithReuseIdentifier: JustDroppedCollectionViewCell.identifier)
+        return collectionview
+    }()
+    
+    private lazy var ChallengeLabel : UILabel = {
+        let label = UILabel()
+        label.text = "본격 한파대비! 연말 필수템 모음"
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        return label
+    }()
+    
+    private lazy var ChallengeDescriptionLabel : UILabel = {
+        let label = UILabel()
+        label.text = "#해피홀리룩챌린지"
+        label.textColor = UIColor(hex: "#878787")
+        label.font = .systemFont(ofSize: 13, weight: .light)
+        return label
+    }()
+    
+    let challengeCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = CGSize(width: 124, height: 165)
+        layout.minimumLineSpacing = 8
+        layout.scrollDirection = .horizontal
+        
+        let collectionview = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionview.backgroundColor = .clear
+        collectionview.isScrollEnabled = true
+        collectionview.register(ChallengeCollectionViewCell.self, forCellWithReuseIdentifier: ChallengeCollectionViewCell.identifier)
+        return collectionview
+    }()
+    
     private lazy var divideLine : UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(hex: "#F2F2F2")
         return view
     }()
     
+    private lazy var divideLine2 : UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(hex: "#F2F2F2")
+        return view
+    }()
+    
     private func setConstraints() {
-        self.addSubview(searchTextField)
-        self.addSubview(alertButton)
-        self.addSubview(segmentedControl)
-        self.addSubview(adImage)
-        self.addSubview(homeCollectionView)
-        self.addSubview(divideLine)
+        self.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(searchTextField)
+        contentView.addSubview(alertButton)
+        contentView.addSubview(segmentedControl)
+        contentView.addSubview(adImage)
+        contentView.addSubview(homeCollectionView)
+        contentView.addSubview(divideLine)
+        contentView.addSubview(JustDroppedLabel)
+        contentView.addSubview(JustDroppedDescriptionLabel)
+        contentView.addSubview(justDroppedCollectionView)
+        contentView.addSubview(divideLine2)
+        contentView.addSubview(ChallengeLabel)
+        contentView.addSubview(ChallengeDescriptionLabel)
+        contentView.addSubview(challengeCollectionView)
+        
+        
+        scrollView.snp.makeConstraints {make in
+            make.edges.equalTo(self.safeAreaLayoutGuide)
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.width.equalTo(scrollView.snp.width)
+        }
         
         searchTextField.snp.makeConstraints { make in
             make.width.equalTo(303)
@@ -141,5 +238,58 @@ class HomeView: UIView {
             make.width.equalToSuperview()
             make.height.equalTo(1)
         }
+        
+        JustDroppedLabel.snp.makeConstraints { make in
+            make.top.equalTo(divideLine.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(16)
+            make.height.equalTo(19)
+        }
+        
+        JustDroppedDescriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(JustDroppedLabel.snp.bottom).offset(4)
+            make.leading.equalToSuperview().offset(16)
+            make.height.equalTo(16)
+        }
+        
+        justDroppedCollectionView.snp.makeConstraints{ make in
+            make.top.equalTo(JustDroppedDescriptionLabel.snp.bottom).offset(14)
+            make.leading.equalToSuperview().inset(16)
+            make.trailing.equalToSuperview()
+            make.width.equalTo(442)
+            make.height.equalTo(237)
+        }
+        
+        divideLine2.snp.makeConstraints{ make in
+            make.top.equalTo(justDroppedCollectionView.snp.bottom).offset(30)
+            make.width.equalToSuperview()
+            make.height.equalTo(1)
+        }
+        
+        ChallengeLabel.snp.makeConstraints { make in
+            make.top.equalTo(divideLine2.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(16)
+            make.height.equalTo(19)
+        }
+        
+        ChallengeDescriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(ChallengeLabel.snp.bottom).offset(4)
+            make.leading.equalToSuperview().offset(16)
+            make.height.equalTo(16)
+        }
+        
+        challengeCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(ChallengeDescriptionLabel.snp.bottom).offset(14)
+            make.leading.equalToSuperview().inset(16)
+            make.trailing.equalToSuperview()
+            make.width.equalTo(388)
+            make.height.equalTo(165)
+            make.bottom.equalToSuperview().inset(20)
+        }
+        
+    }
+    
+    private func setupHomeViews(){
+        
+        
     }
 }
