@@ -18,13 +18,13 @@ class HomeView: UIView {
         let scrollview = UIScrollView()
         scrollview.showsVerticalScrollIndicator = true
         scrollview.showsHorizontalScrollIndicator = false
-        scrollview.contentSize = CGSize(width: 374, height: 1400) //이거 안해주면 scroll 안됨
+        //scrollview.contentSize = contentView.frame.size //이거 안해주면 scroll 안됨
         return scrollview
     }()
     
     private lazy var contentView: UIView = {
-            let view = UIView()
-            return view
+        let view = UIView()
+        return view
     }()
     
     private lazy var searchTextField: UITextField = {
@@ -170,6 +170,7 @@ class HomeView: UIView {
     private func setConstraints() {
         self.addSubview(scrollView)
         scrollView.addSubview(contentView)
+        
         contentView.addSubview(searchTextField)
         contentView.addSubview(alertButton)
         contentView.addSubview(segmentedControl)
@@ -186,12 +187,14 @@ class HomeView: UIView {
         
         
         scrollView.snp.makeConstraints {make in
-            make.edges.equalTo(self.safeAreaLayoutGuide)
+            make.edges.equalTo(self.safeAreaLayoutGuide) // 스크롤 뷰 안전영역 지키기
         }
         
         contentView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            make.width.equalTo(scrollView.snp.width)
+            make.left.right.equalToSuperview()
+            make.top.equalToSuperview()
+            make.bottom.equalTo(challengeCollectionView.snp.bottom).offset(20) // 마지막 요소에 맞추어 설정
+            make.width.equalTo(self.snp.width)
         }
         
         searchTextField.snp.makeConstraints { make in
@@ -283,13 +286,8 @@ class HomeView: UIView {
             make.trailing.equalToSuperview()
             make.width.equalTo(388)
             make.height.equalTo(165)
-            make.bottom.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview().offset(-20)
         }
-        
-    }
-    
-    private func setupHomeViews(){
-        
         
     }
 }
