@@ -8,7 +8,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
         self.view = homeview
         setupAction()
         setUpDelegate()
-        
+    
         homeview.homeCollectionView.tag = 1
         homeview.justDroppedCollectionView.tag = 2
         homeview.challengeCollectionView.tag = 3
@@ -95,10 +95,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
     @objc
         private func segmentedControlValueChanged(segment: UISegmentedControl) {
             if segment.selectedSegmentIndex == 0 {
-                homeview.adImage.isHidden = false
+                homeview.recommendView.isHidden = false
             }
             else {
-                homeview.adImage.isHidden = true
+                homeview.recommendView.isHidden = true
             }
         }
     

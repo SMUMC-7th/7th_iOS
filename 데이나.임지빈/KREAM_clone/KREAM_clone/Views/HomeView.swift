@@ -7,6 +7,7 @@ class HomeView: UIView {
         super.init(frame: frame)
         self.backgroundColor = .white
         setConstraints()
+        scrollView.contentSize = recommendView.bounds.size //이거 안해주면 scroll 안됨
     }
     
     required init?(coder: NSCoder) {
@@ -18,11 +19,11 @@ class HomeView: UIView {
         let scrollview = UIScrollView()
         scrollview.showsVerticalScrollIndicator = true
         scrollview.showsHorizontalScrollIndicator = false
-        //scrollview.contentSize = contentView.frame.size //이거 안해주면 scroll 안됨
+        scrollview.contentSize = CGSize(width: self.frame.width, height: 10000)
         return scrollview
     }()
     
-    private lazy var contentView: UIView = {
+    lazy var recommendView: UIView = {
         let view = UIView()
         return view
     }()
@@ -169,38 +170,28 @@ class HomeView: UIView {
     
     private func setConstraints() {
         self.addSubview(scrollView)
-        scrollView.addSubview(contentView)
         
-        contentView.addSubview(searchTextField)
-        contentView.addSubview(alertButton)
-        contentView.addSubview(segmentedControl)
-        contentView.addSubview(adImage)
-        contentView.addSubview(homeCollectionView)
-        contentView.addSubview(divideLine)
-        contentView.addSubview(JustDroppedLabel)
-        contentView.addSubview(JustDroppedDescriptionLabel)
-        contentView.addSubview(justDroppedCollectionView)
-        contentView.addSubview(divideLine2)
-        contentView.addSubview(ChallengeLabel)
-        contentView.addSubview(ChallengeDescriptionLabel)
-        contentView.addSubview(challengeCollectionView)
+        self.addSubview(searchTextField)
+        self.addSubview(alertButton)
+        self.addSubview(segmentedControl)
+        recommendView.addSubview(adImage)
+        recommendView.addSubview(homeCollectionView)
+        recommendView.addSubview(divideLine)
+        recommendView.addSubview(JustDroppedLabel)
+        recommendView.addSubview(JustDroppedDescriptionLabel)
+        recommendView.addSubview(justDroppedCollectionView)
+        recommendView.addSubview(divideLine2)
+        recommendView.addSubview(ChallengeLabel)
+        recommendView.addSubview(ChallengeDescriptionLabel)
+        recommendView.addSubview(challengeCollectionView)
         
+        scrollView.addSubview(recommendView)
         
-        scrollView.snp.makeConstraints {make in
-            make.edges.equalTo(self.safeAreaLayoutGuide) // 스크롤 뷰 안전영역 지키기
-        }
-        
-        contentView.snp.makeConstraints { make in
-            make.left.right.equalToSuperview()
-            make.top.equalToSuperview()
-            make.bottom.equalTo(challengeCollectionView.snp.bottom).offset(20) // 마지막 요소에 맞추어 설정
-            make.width.equalTo(self.snp.width)
-        }
         
         searchTextField.snp.makeConstraints { make in
             make.width.equalTo(303)
             make.height.equalTo(40)
-            //make.top.equalTo(self.safeAreaLayoutGuide).inset(6)//엥 왜 이거 없으니까 제대로 나옴 이거 있었을때 height가 안바꼇음
+            make.top.equalTo(self.safeAreaLayoutGuide).inset(6)//엥 왜 이거 없으니까 제대로 나옴 이거 있었을때 height가 안바꼇음
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().inset(55)
         }
@@ -221,12 +212,23 @@ class HomeView: UIView {
             make.width.equalTo(325)
         }
         
+        scrollView.snp.makeConstraints {make in
+            make.top.equalTo(segmentedControl.snp.bottom)
+            make.leading.trailing.bottom.equalTo(self.safeAreaLayoutGuide)
+        }
+        
+        recommendView.snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(segmentedControl.snp.bottom).offset(6)
+            make.bottom.equalTo(challengeCollectionView.snp.bottom).offset(20)
+            make.width.equalToSuperview()
+        }
+        
         adImage.snp.makeConstraints{ make in
-            make.top.equalTo(self.safeAreaLayoutGuide).offset(89)
-            make.height.equalTo(361)
-            make.centerX.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(0)
-            //여기 constraint 다시 잡아야될듯,, 수치 x
+            make.top.equalToSuperview()
+            make.height.equalTo(336)
+            make.width.equalTo(374)
+            make.leading.trailing.equalTo(self.safeAreaLayoutGuide).offset(0)
         }
         
         homeCollectionView.snp.makeConstraints { make in
@@ -286,7 +288,7 @@ class HomeView: UIView {
             make.trailing.equalToSuperview()
             make.width.equalTo(388)
             make.height.equalTo(165)
-            make.bottom.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview()
         }
         
     }
