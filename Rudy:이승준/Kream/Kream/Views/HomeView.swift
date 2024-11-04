@@ -309,7 +309,7 @@ class HomeView: UIView {
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(justDroppedSubTitle.snp.bottom).offset(14)
             make.bottom.equalTo(justDroppedBottomLine.snp.top).inset(-10)
-            make.height.equalTo(257)
+            make.height.equalTo(247)
         }
         
         justDroppedBottomLine.snp.makeConstraints { make in
@@ -338,9 +338,9 @@ class HomeView: UIView {
         challengeCollectionView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.top.equalTo(challengeSubTitle.snp.bottom).offset(14)
+            make.top.equalTo(challengeSubTitle.snp.bottom)
             make.bottom.equalTo(challengeBottomLine.snp.top).inset(-10)
-            make.height.equalTo(257)
+            make.height.equalTo(175)
         }
         
         challengeBottomLine.snp.makeConstraints { make in
