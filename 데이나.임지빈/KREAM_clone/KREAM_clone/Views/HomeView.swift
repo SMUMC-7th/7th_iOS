@@ -19,7 +19,6 @@ class HomeView: UIView {
         let scrollview = UIScrollView()
         scrollview.showsVerticalScrollIndicator = true
         scrollview.showsHorizontalScrollIndicator = false
-        scrollview.contentSize = CGSize(width: self.frame.width, height: 10000)
         return scrollview
     }()
     
@@ -78,7 +77,8 @@ class HomeView: UIView {
     public var adImage : UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Ad")
-        imageView.contentMode = .scaleAspectFit // 이걸 빼면 여백 안생기는데 가로로 길어짐
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .yellow
         return imageView
     }()
     
@@ -187,7 +187,6 @@ class HomeView: UIView {
         
         scrollView.addSubview(recommendView)
         
-        
         searchTextField.snp.makeConstraints { make in
             make.width.equalTo(303)
             make.height.equalTo(40)
@@ -218,17 +217,16 @@ class HomeView: UIView {
         }
         
         recommendView.snp.makeConstraints { make in
-            make.left.right.equalToSuperview()
-            make.top.equalTo(segmentedControl.snp.bottom).offset(6)
-            make.bottom.equalTo(challengeCollectionView.snp.bottom).offset(20)
-            make.width.equalToSuperview()
+            make.top.equalTo(scrollView)
+            make.edges.equalToSuperview()
+            make.width.equalTo(scrollView) //스크롤뷰와 동일한 너비 유지
+            make.height.equalTo(1500) //스크롤 가능하도록 콘텐츠 높이 설정
         }
         
         adImage.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
+            make.top.trailing.leading.equalToSuperview()
             make.height.equalTo(336)
             make.width.equalTo(374)
-            make.leading.trailing.equalTo(self.safeAreaLayoutGuide).offset(0)
         }
         
         homeCollectionView.snp.makeConstraints { make in
