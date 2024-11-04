@@ -66,28 +66,29 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if (collectionView.tag == 0) {
+        switch collectionView.tag {
+        case 0 :
             return HomeCategoryModel.data.count
-        } else if (collectionView.tag == 1) {
+        case 1 :
             return SavedProducts.just.count
-        } else if (collectionView.tag == 2) {
+        case 2 :
             return ChallengeModel.data.count
+        default :
+            return 0
         }
-        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if (collectionView.tag == 0) {
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: HomeCategoryCollectionViewCell.identifier, for: indexPath) as? HomeCategoryCollectionViewCell
+        switch collectionView.tag {
+        case 0:
+            guard let cell = collectionView.dequeueReusableCell( withReuseIdentifier: HomeCategoryCollectionViewCell.identifier, for: indexPath) as? HomeCategoryCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
             let data = HomeCategoryModel.data[indexPath.row]
             cell.configuration(data: data)
             return cell
-        }
-        if (collectionView.tag == 1) {
+        case 1:
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: JustDroppedCollectionViewCell.identifier, for: indexPath) as? JustDroppedCollectionViewCell
             else {
@@ -96,8 +97,7 @@ extension HomeViewController: UICollectionViewDataSource {
             let data = SavedProducts.just[indexPath.row]
             cell.configuration(data: data)
             return cell
-        }
-        if (collectionView.tag == 2) {
+        case 2:
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: ChallengeCollectionViewCell.identifier, for: indexPath) as? ChallengeCollectionViewCell
             else {
@@ -106,8 +106,9 @@ extension HomeViewController: UICollectionViewDataSource {
             let data = ChallengeModel.data[indexPath.row]
             cell.configuration(data: data)
             return cell
+        default:
+            return UICollectionViewCell()
         }
-        return UICollectionViewCell()
     }
 }
 
