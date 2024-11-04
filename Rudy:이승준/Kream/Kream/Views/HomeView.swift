@@ -79,19 +79,22 @@ class HomeView: UIView {
         return seg
     }()
     
-    public var underLine: UIView = {
+    public var segmentedControlUnderline: UIView = {
         let line = UIView()
         line.backgroundColor = .black
         return line
     }()
     
-    // MARK: RecomendationView : Ad, CategoryCollectionViews
-    public var recomendationViewContainer: UIView = {
-        let view = UIView()
-        //view.backgroundColor = .darkGray
-        return view
+    //MARK: - ScrollView
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = true // 세로 스크롤바 보임
+        scrollView.showsHorizontalScrollIndicator = false // 가로 스크롤바 안보임
+        scrollView.contentSize.width = 150
+        return scrollView
     }()
     
+    // MARK: : Ad, CategoryCollectionViews
     private var adImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -99,7 +102,7 @@ class HomeView: UIView {
         return image
     }()
     
-    public var collectionView : UICollectionView = {
+    public var categoryCollectionView : UICollectionView = {
         let flow = UICollectionViewFlowLayout()
         flow.estimatedItemSize = .init(width: 61, height: 81)
         flow.minimumInteritemSpacing = 12
@@ -109,8 +112,7 @@ class HomeView: UIView {
         collection.backgroundColor = .clear
         collection.isScrollEnabled = false
         collection.register(HomeCategoryCollectionViewCell.self,
-                            forCellWithReuseIdentifier: HomeCategoryCollectionViewCell.identifier)
-        
+            forCellWithReuseIdentifier: HomeCategoryCollectionViewCell.identifier)
         return collection
     }()
     
@@ -119,6 +121,78 @@ class HomeView: UIView {
         line.backgroundColor = UIColor(named: "BottomLine")
         return line
     }()
+    
+    private var justDroppedTitle: UILabel = {
+        let label = UILabel()
+        label.text = "Just Dropped"
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        return label
+    }()
+    
+    private var justDroppedSubTitle: UILabel = {
+        let label = UILabel()
+        label.text = "발매 상품"
+        label.font = .systemFont(ofSize: 13)
+        label.textColor = .subtitle
+        return label
+    }()
+    
+    public lazy var justDroppedCollectionView: UICollectionView = {
+        let flow = UICollectionViewFlowLayout()
+        flow.estimatedItemSize = CGSize(width: 142, height: 237)
+        flow.minimumLineSpacing = 8
+        flow.scrollDirection = .horizontal
+        
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: flow)
+        collection.backgroundColor = .clear
+        collection.isScrollEnabled = true
+        collection.showsHorizontalScrollIndicator = false
+        collection.register(JustDroppedCollectionViewCell.self, forCellWithReuseIdentifier: JustDroppedCollectionViewCell.identifier)
+        return collection
+    }()
+    
+    private lazy var justDroppedBottomLine: UIView = {
+        let line = UIView()
+        line.backgroundColor = UIColor(named: "BottomLine")
+        return line
+    }()
+    
+    private var challengeTitle: UILabel = {
+        let label = UILabel()
+        label.text = "본격 한파대비! 연말 필수템 모음"
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        return label
+    }()
+    
+    private var challengeSubTitle: UILabel = {
+        let label = UILabel()
+        label.text = "#해피홀리룩챌린지"
+        label.font = .systemFont(ofSize: 13)
+        label.textColor = .subtitle
+        return label
+    }()
+    
+    public lazy var challengeCollectionView: UICollectionView = {
+        let flow = UICollectionViewFlowLayout()
+        flow.estimatedItemSize = CGSize(width: 142, height: 237)
+        flow.minimumInteritemSpacing = 12
+        flow.minimumLineSpacing = 8
+        flow.scrollDirection = .horizontal
+        
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: flow)
+        collection.backgroundColor = .clear
+        collection.isScrollEnabled = true
+        collection.showsHorizontalScrollIndicator = false
+        collection.register(ChallengeCollectionViewCell.self, forCellWithReuseIdentifier: ChallengeCollectionViewCell.identifier)
+        return collection
+    }()
+    
+    private lazy var challengeBottomLine: UIView = {
+        let line = UIView()
+        line.backgroundColor = UIColor(named: "BottomLine")
+        return line
+    }()
+    
     
     private var tabBarline: UIView = {
         let line = UIView()
@@ -129,21 +203,16 @@ class HomeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
-        self.addComponents()
+        self.addTopComponents()
+        self.addSegmentedComponent()
+        self.addScrollComponents()
+        self.addJustDroppedComponents()
+        self.addChallengeComponents()
+        self.addTabBarLine()
     }
     
-    private func addComponents() {
-                
-        self.addSubview(segmentedControl)
-        self.addSubview(recomendationViewContainer)
-        
-        recomendationViewContainer.addSubview(adImageView)
-        recomendationViewContainer.addSubview(collectionView)
-        recomendationViewContainer.addSubview(collectionViewBottomLine)
-        
-        self.addSubview(tabBarline)
+    private func addTopComponents() {
         self.addSubview(topViewContainer)
-        
         topViewContainer.addSubview(searchBarButton)
         topViewContainer.addSubview(alarmButton)
         
@@ -163,9 +232,11 @@ class HomeView: UIView {
             make.leading.equalTo(searchBarButton.snp.trailing).offset(10)
             make.trailing.equalTo(0)
         }
-        
+    }
+    
+    private func addSegmentedComponent() {
         self.addSubview(segmentedControl)
-        self.addSubview(underLine)
+        self.addSubview(segmentedControlUnderline)
         
         segmentedControl.snp.makeConstraints { make in
             make.top.equalTo(topViewContainer.snp.bottom).offset(10)
@@ -173,55 +244,126 @@ class HomeView: UIView {
             make.height.equalTo(27)
         }
         
-        underLine.snp.makeConstraints { make in
+        segmentedControlUnderline.snp.makeConstraints { make in
             make.top.equalTo(segmentedControl.snp.bottom)
             make.height.equalTo(2)
             make.leading.equalTo(14.66) // 확인용, 지워야됨
             make.width.equalTo(25.68)
         }
+    }
+    
+    private func addScrollComponents() {
         
-        self.addSubview(recomendationViewContainer)
+        self.addSubview(scrollView)
         
-        recomendationViewContainer.addSubview(adImageView)
-        recomendationViewContainer.addSubview(collectionView)
-        recomendationViewContainer.addSubview(collectionViewBottomLine)
+        //MARK: ScrollView
         
-        recomendationViewContainer.snp.makeConstraints { make in
-            make.top.equalTo(underLine.snp.bottom).inset(-1)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-5)
+        scrollView.addSubview(adImageView)
+        scrollView.addSubview(categoryCollectionView)
+        scrollView.addSubview(collectionViewBottomLine)
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(segmentedControl.snp.bottom).offset(5)
+            make.leading.trailing.bottom.equalTo(self.safeAreaLayoutGuide)
         }
         
         adImageView.snp.makeConstraints { make in
-            make.trailing.leading.equalToSuperview()
-            make.top.equalTo(recomendationViewContainer.snp.top).inset(8)
-            make.height.equalTo(336)
+            make.left.right.equalToSuperview()
+            make.top.equalTo(scrollView.snp.top).inset(8)
+            make.width.equalTo(self.snp.width)
+            make.height.equalTo(366)
         }
         
-        collectionView.snp.makeConstraints { make in
+        categoryCollectionView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(10)
             make.trailing.equalToSuperview().offset(-10)
-            make.top.equalTo(adImageView.snp.bottom).offset(40)
+            make.top.equalTo(adImageView.snp.bottom).offset(10)
             make.height.equalTo(182)
         }
         
         collectionViewBottomLine.snp.makeConstraints { make in
             make.trailing.leading.equalToSuperview()
             make.height.equalTo(2)
-            make.top.equalTo(collectionView.snp.bottom).offset(40)
+            make.top.equalTo(categoryCollectionView.snp.bottom).offset(30)
+        }
+    }
+    
+    private func addJustDroppedComponents() {
+        
+        scrollView.addSubview(justDroppedTitle)
+        scrollView.addSubview(justDroppedSubTitle)
+        scrollView.addSubview(justDroppedCollectionView)
+        scrollView.addSubview(justDroppedBottomLine)
+        
+        justDroppedTitle.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16)
+            make.top.equalTo(collectionViewBottomLine.snp.bottom).inset(-20)
         }
         
-        tabBarline.snp.makeConstraints { make in
+        justDroppedSubTitle.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16)
+            make.top.equalTo(justDroppedTitle.snp.bottom).offset(4)
+        }
+        
+        justDroppedCollectionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(recomendationViewContainer.snp.bottom).offset(-10)
-            make.height.equalTo(1)
+            make.top.equalTo(justDroppedSubTitle.snp.bottom).offset(14)
+            make.bottom.equalTo(justDroppedBottomLine.snp.top).inset(-10)
+            make.height.equalTo(257)
+        }
+        
+        justDroppedBottomLine.snp.makeConstraints { make in
+            make.top.equalTo(justDroppedCollectionView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(2)
+        }
+    }
+    
+    private func addChallengeComponents() {
+        scrollView.addSubview(challengeTitle)
+        scrollView.addSubview(challengeSubTitle)
+        scrollView.addSubview(challengeCollectionView)
+        scrollView.addSubview(challengeBottomLine)
+        
+        challengeTitle.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16)
+            make.top.equalTo(justDroppedBottomLine.snp.bottom).inset(-20)
+        }
+        
+        challengeSubTitle.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16)
+            make.top.equalTo(challengeTitle.snp.bottom).offset(4)
+        }
+        
+        challengeCollectionView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.top.equalTo(challengeSubTitle.snp.bottom).offset(14)
+            make.bottom.equalTo(challengeBottomLine.snp.top).inset(-10)
+            make.height.equalTo(257)
+        }
+        
+        challengeBottomLine.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-10)
+            make.height.equalTo(2)
         }
         
     }
     
+    private func addTabBarLine() {
+//        self.addSubview(tabBarline)
+//        
+//        tabBarline.snp.makeConstraints { make in
+//            make.leading.trailing.equalToSuperview()
+//            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-10)
+//            make.height.equalTo(1)
+//        }
+    }
+    
     public func setUnderline(leadingDistance: CGFloat, textWidth: CGFloat) {
-        underLine.snp.removeConstraints()
-        underLine.snp.makeConstraints { make in
+        segmentedControlUnderline.snp.removeConstraints()
+        segmentedControlUnderline.snp.makeConstraints { make in
             make.top.equalTo(segmentedControl.snp.bottom)
             make.height.equalTo(2)
             make.leading.equalTo(leadingDistance)

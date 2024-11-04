@@ -9,7 +9,7 @@ import UIKit
 
 class HomeCategoryCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = "categoryIdentifier"
+    static let identifier = "CategoryIdentifier"
     
     let container: UIView = {
         let view = UIView()
@@ -33,7 +33,6 @@ class HomeCategoryCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         self.setupView()
     }
         

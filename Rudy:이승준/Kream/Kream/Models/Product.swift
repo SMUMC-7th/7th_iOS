@@ -12,6 +12,7 @@ struct Product {
     let name: String
     let desription: String
     let image: UIImage?
+    var traded: String = "0"
     let price: Int
     var bookmarked: Bool
 }
@@ -84,6 +85,23 @@ final class SavedProducts {
                 """,
                 image: UIImage(named: "Guitar01"),
                 price: 120000, bookmarked: true),
+    ]
+    static let just: [Product] = [
+        Product(name: "청키라이너 뉴욕양키스",
+                desription: "MLB",
+                image: UIImage(named: "청키라이너 뉴욕양키스"),
+                traded: "12.8만",
+                price: 139000, bookmarked: false),
+        Product(name: "Jordan 1 Retro High OG Yellow Ochre",
+                desription: "Jordan",
+                image: UIImage(named: "Jordan 1 Retro High OG Yellow Ochre"),
+                traded: "15.6만",
+                price: 228000, bookmarked: true),
+        Product(name: "Human Made x Kaws Varsity Jacket #1 Black",
+                desription: "Human Made",
+                image: UIImage(named: "Human Made x Kaws Varsity Jacket #1 Black"),
+                traded: "15.6만",
+                price: 2000000, bookmarked: true),
     ]
 }
 
