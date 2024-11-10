@@ -77,8 +77,7 @@ class HomeView: UIView {
     public var adImage : UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Ad")
-        imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .yellow
+        //imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
@@ -224,9 +223,9 @@ class HomeView: UIView {
         }
         
         adImage.snp.makeConstraints{ make in
-            make.top.trailing.leading.equalToSuperview()
-            make.height.equalTo(336)
-            make.width.equalTo(374)
+            make.width.equalTo(recommendView)
+            make.top.equalTo(recommendView)
+            //make.height.equalTo(374)
         }
         
         homeCollectionView.snp.makeConstraints { make in

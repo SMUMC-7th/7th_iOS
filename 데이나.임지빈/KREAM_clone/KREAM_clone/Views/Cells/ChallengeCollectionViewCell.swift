@@ -17,7 +17,8 @@ class ChallengeCollectionViewCell : UICollectionViewCell {
     let imageView : UIImageView = {
         let imageview = UIImageView()
         imageview.contentMode = .scaleAspectFill
-        //image.clipsToBounds = true
+        imageview.layer.cornerRadius = 8
+        imageview.clipsToBounds = true //이거 추가 안하면 모서리 안잘림
         return imageview
     }()
     

@@ -17,7 +17,7 @@ class JustDroppedCollectionViewCell : UICollectionViewCell {
     let imageView : UIImageView = {
         let imageview = UIImageView()
         imageview.contentMode = .scaleAspectFill
-        //image.clipsToBounds = true
+        imageview.clipsToBounds = true
         return imageview
     }()
     
@@ -32,6 +32,8 @@ class JustDroppedCollectionViewCell : UICollectionViewCell {
         let name = UILabel()
         name.font = .systemFont(ofSize: 12, weight: .light)
         name.textColor = .black
+        name.lineBreakMode = .byWordWrapping //단어 단위로 줄 바꿔주는거
+        name.numberOfLines = 2 //2줄
         return name
     }()
     
@@ -69,12 +71,12 @@ class JustDroppedCollectionViewCell : UICollectionViewCell {
         
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(brandLabel.snp.bottom).offset(3)
-            make.height.equalTo(14)
+            make.width.equalTo(imageView.snp.width)
             make.leading.equalToSuperview().offset(4)
         }
         
         priceLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(26)
+            make.top.equalTo(imageView.snp.bottom).offset(65)
             make.leading.equalToSuperview().offset(4)
             make.height.equalTo(16)
         }
