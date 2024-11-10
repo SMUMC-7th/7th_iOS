@@ -1,114 +1,99 @@
-
 import UIKit
 import SnapKit
 
-class HomeViewController: UIViewController, UICollectionViewDelegate {
+class HomeViewController: UIViewController {
     
     let homeView = HomeView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = homeView
-        homeView.categoryCollectionView.tag = 0
-        homeView.justDroppedCollectionView.tag = 1
-        homeView.challengeCollectionView.tag = 2
-        
+        setupCollectionViews()
         setupAction()
-        setUpDelegate()
+    }
+    
+    private func setupCollectionViews() {
+        setupCollectionView(homeView.categoryCollectionView, type: .category)
+        setupCollectionView(homeView.justDroppedCollectionView, type: .justDropped)
+        setupCollectionView(homeView.challengeCollectionView, type: .challenge)
+    }
+    
+    private func setupCollectionView(_ collectionView: UICollectionView, type: CollectionViewType) {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.tag = type.rawValue
+        
+        switch type {
+        case .category:
+            collectionView.register(HomeCategoryCollectionViewCell.self, forCellWithReuseIdentifier: HomeCategoryCollectionViewCell.identifier)
+        case .justDropped:
+            collectionView.register(JustDroppedCollectionViewCell.self, forCellWithReuseIdentifier: JustDroppedCollectionViewCell.identifier)
+        case .challenge:
+            collectionView.register(ChallengeCollectionViewCell.self, forCellWithReuseIdentifier: ChallengeCollectionViewCell.identifier)
+        }
     }
     
     private func setupAction() {
-        homeView.segmentedControl.addTarget(
-            self,
-            action: #selector(segmentedControlValueChanged(segment:)),
-            for: .valueChanged
-        )
+        homeView.segmentedControl.addTarget( self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
     }
     
-    private func setUpDelegate() {
-        homeView.categoryCollectionView.delegate = self
-        homeView.categoryCollectionView.dataSource = self
+    @objc private func segmentedControlValueChanged() {
+        let selectedSegmentIndex = homeView.segmentedControl.selectedSegmentIndex
+        let selectedSegmentFrame = homeView.segmentedControl.subviews[selectedSegmentIndex].frame
+        let segmentTitle = homeView.segmentedControl.titleForSegment(at: selectedSegmentIndex) ?? ""
         
-        homeView.justDroppedCollectionView.delegate = self
-        homeView.justDroppedCollectionView.dataSource = self
+        let textAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 16, weight: .bold)
+        ]
         
-        homeView.challengeCollectionView.delegate = self
-        homeView.challengeCollectionView.dataSource = self
+        let textWidth = (segmentTitle as NSString).size(withAttributes: textAttributes).width
+        let segmentWidth = selectedSegmentFrame.width
+        let textStartX = (segmentWidth - textWidth) / 2
+        let leadingDistance = selectedSegmentFrame.origin.x + textStartX
+        
+        self.homeView.setUnderline(leadingDistance: leadingDistance, textWidth: textWidth + 1)
     }
-    
-    // SegmentedControl의 버튼을 눌렀을 때, 호출되는 함수 구현
-    @objc private func segmentedControlValueChanged(segment: UISegmentedControl) {
-    let selectedSegmentIndex = homeView.segmentedControl.selectedSegmentIndex                 // 세그먼트의 인덱스값 가져옴
-    let selectedSegmentFrame = homeView.segmentedControl.subviews[selectedSegmentIndex].frame // 선택된 세그먼트의 프레임 가져옴
-
-    // 세그먼트의 텍스트 가져오기
-    let segmentTitle = homeView.segmentedControl.titleForSegment(at: selectedSegmentIndex) ?? ""
-    
-    // 텍스트 크기 계산 (세그먼트에 설정된 폰트와 동일한 속성 사용)
-    let textAttributes: [NSAttributedString.Key: Any] = [
-        .font: UIFont.systemFont(ofSize: 16, weight: .bold)
-    ]
-    
-    let textWidth = (segmentTitle as NSString).size(withAttributes: textAttributes).width // 텍스트 너비 계산
-    
-    // 세그먼트 프레임 안에서 텍스트 시작점 계산
-    let segmentWidth = selectedSegmentFrame.width
-    let textStartX = (segmentWidth - textWidth) / 2 // 세그먼트 내 텍스트 시작점 (중앙에서 텍스트 길이의 절반 만큼 왼쪽으로 이동)
-
-    // 세그먼트의 시작점에 텍스트 시작점을 더한 값이 underLineView의 정확한 시작점이 됨
-    let leadingDistance = selectedSegmentFrame.origin.x + textStartX
-    
-    self.homeView.setUnderline(leadingDistance: leadingDistance, textWidth: textWidth + 1)
-}
-    
 }
 
-extension HomeViewController: UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let type = CollectionViewType(rawValue: collectionView.tag) else { return 0 }
         
-        switch collectionView.tag {
-        case 0 :
+        switch type {
+        case .category:
             return HomeCategoryModel.data.count
-        case 1 :
+        case .justDropped:
             return SavedProducts.just.count
-        case 2 :
+        case .challenge:
             return ChallengeModel.data.count
-        default :
-            return 0
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch collectionView.tag {
-        case 0:
-            guard let cell = collectionView.dequeueReusableCell( withReuseIdentifier: HomeCategoryCollectionViewCell.identifier, for: indexPath) as? HomeCategoryCollectionViewCell
-            else {
-                return UICollectionViewCell()
-            }
+        guard let type = CollectionViewType(rawValue: collectionView.tag) else { return UICollectionViewCell() }
+        
+        switch type {
+        case .category:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCategoryCollectionViewCell.identifier, for: indexPath) as! HomeCategoryCollectionViewCell
             let data = HomeCategoryModel.data[indexPath.row]
             cell.configuration(data: data)
             return cell
-        case 1:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: JustDroppedCollectionViewCell.identifier, for: indexPath) as? JustDroppedCollectionViewCell
-            else {
-                return UICollectionViewCell()
-            }
+        case .justDropped:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JustDroppedCollectionViewCell.identifier, for: indexPath) as! JustDroppedCollectionViewCell
             let data = SavedProducts.just[indexPath.row]
             cell.configuration(data: data)
             return cell
-        case 2:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: ChallengeCollectionViewCell.identifier, for: indexPath) as? ChallengeCollectionViewCell
-            else {
-                return UICollectionViewCell()
-            }
+        case .challenge:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChallengeCollectionViewCell.identifier, for: indexPath) as! ChallengeCollectionViewCell
             let data = ChallengeModel.data[indexPath.row]
             cell.configuration(data: data)
             return cell
-        default:
-            return UICollectionViewCell()
         }
     }
 }
 
+enum CollectionViewType: Int {
+    case category = 0
+    case justDropped = 1
+    case challenge = 2
+}
