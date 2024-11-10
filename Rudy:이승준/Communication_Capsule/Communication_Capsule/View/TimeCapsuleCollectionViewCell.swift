@@ -98,7 +98,7 @@ class TimeCapsuleCollectionViewCell: UICollectionViewCell {
         deleteCapsule.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-20)
             make.top.equalToSuperview().offset(20)
-            make.height.equalTo(15)
+            make.height.equalTo(10)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -134,10 +134,11 @@ class TimeCapsuleCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configuration(data: TimeCapsuleTemp) {
+    func configuration(data: TimeCapsule) {
         titleLabel.text = data.title
-        lightImage.image = data.isAvailable ? UIImage(named: "AvailableLight") : UIImage(named: "UnavailableLight")
-        statusLabel.text = data.days
+        lightImage.image = data.isOpened ? UIImage(named: "AvailableLight") : UIImage(named: "UnavailableLight")
+        statusLabel.text = data.d_Day
+        progressBar.progress = data.progress
     }
     
     

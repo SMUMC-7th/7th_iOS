@@ -16,16 +16,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
         LoginManager.shared.login(email: "rofx@gmail.com", password: "123456") { result in }
-//        TimeCapsuleService.shared.fetchTimeCapsules(accessToken: accessToken) { result in
-//            switch result {
-//            case .success(let timeCapsules):
-//                print("타임캡슐 조회 성공: \(timeCapsules)")
-//                // 여기서 UI 업데이트 등의 작업을 수행합니다.
-//            case .failure(let error):
-//                print("타임캡슐 조회 실패: \(error.localizedDescription)")
-//                // 에러 처리를 수행합니다.
-//            }
-//        }
+        TimeCapsuleService.shared.fetchTimeCapsules(accessToken: accessToken) { result in
+            switch result {
+            case .success(let timeCapsules):
+                print("타임캡슐 조회 성공: \(timeCapsules)")
+                TimeCapsuleModel.data = timeCapsules
+                // 여기서 UI 업데이트 등의 작업을 수행합니다.
+            case .failure(let error):
+                print("타임캡슐 조회 실패: \(error.localizedDescription)")
+                // 에러 처리를 수행합니다.
+            }
+        }
     }
 
 }

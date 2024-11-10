@@ -12,6 +12,7 @@ class HomeView: UIView {
     // 버튼이 눌린 동작에 대한 선택
     var onTagSelected: ((String) -> Void)?
     public var tagButtons: [UIButton] = []
+    var reloadCollectionView: (() -> Void)?
     
     //MARK: - Header : Title, SubTitle, ProfileImage
     private lazy var headerContainer: UIView = {

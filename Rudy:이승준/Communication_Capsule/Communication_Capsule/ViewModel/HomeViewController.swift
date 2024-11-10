@@ -11,6 +11,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     
     var selectedTag: UIButton?
     var selectedState: UIButton?
+    let accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcHBsZUBnbWFpbC5jb20iLCJyb2xlIjoiIiwiaWF0IjoxNzMxMjI0MjI5LCJleHAiOjE3MzEyMjc4Mjl9.5jgzqVwacArPOWNPqkxNi6MTgEFUHdqce_lo6vAZCUk"
     
     private var homeView: HomeView = {
         let view = HomeView()
@@ -23,8 +24,20 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
         homeView.tiemCapsuleCollectionView.delegate = self
         homeView.tiemCapsuleCollectionView.dataSource = self
         self.defineButtonActions()
+        TimeCapsuleService.shared.fetchTimeCapsules(accessToken: accessToken) { result in
+            switch result {
+            case .success(let timeCapsules):
+                //print("타임캡슐 조회 성공: \(timeCapsules)")
+                TimeCapsuleModel.data = timeCapsules
+                DispatchQueue.main.async {
+                    self.homeView.tiemCapsuleCollectionView.reloadData()
+                }
+            case .failure(let error):
+                print("타임캡슐 조회 실패: \(error.localizedDescription)")
+                // 에러 처리를 수행합니다.
+            }
+        }
     }
-    
 }
 
 //MARK: Button Actions
@@ -109,7 +122,7 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        TimeCapsuleTempModel.data.count
+        TimeCapsuleModel.data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -118,7 +131,7 @@ extension HomeViewController: UICollectionViewDataSource {
         else {
             return UICollectionViewCell()
         }
-        let data = TimeCapsuleTempModel.data[indexPath.row]
+        let data = TimeCapsuleModel.data[indexPath.row]
         cell.configuration(data: data)
         return cell
     }
