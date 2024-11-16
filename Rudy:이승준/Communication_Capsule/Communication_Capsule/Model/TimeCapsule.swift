@@ -11,7 +11,7 @@ import Alamofire
 // curl -X 'GET' \
 //   'https://api-echo.shop/api/timecapsules' \
 //   -H 'accept: */*' \
-//   -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcHBsZUBnbWFpbC5jb20iLCJyb2xlIjoiIiwiaWF0IjoxNzMxMjA5NzY0LCJleHAiOjE3MzEyMTMzNjR9.voaIfj9yVfUCTQCzvhzmgz7uSIwbulc1WeKZVoeJJSU'
+//   -H 'Authorization: Bearer "key......"
 
 class TimeCapsuleService {
     static let shared = TimeCapsuleService()
@@ -28,7 +28,6 @@ class TimeCapsuleService {
             case .success(let data):
                 if let json = try? JSONDecoder().decode(TimeCapsuleResponse.self, from: data) {
                     completion(.success(json.result))
-                    //print(json)
                 } else if let token = String(data: data, encoding: .utf8) {
                     print("Received unexpected token: \(token)")
                     // 토큰 갱신 로직 또는 에러 처리

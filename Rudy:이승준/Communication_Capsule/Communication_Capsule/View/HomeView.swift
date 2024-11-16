@@ -137,7 +137,7 @@ class HomeView: UIView {
         self.backgroundColor = .white
         self.addHeaderComponents()
         self.addTagButtons()
-        self.addCollectionView(padding: self.bounds.width <= 375 ? 20 : 40)
+        self.addCollectionView(padding: self.bounds.width <= 375 ? 30 : 40)
         self.addFloatingButton()
     }
     
@@ -256,7 +256,6 @@ class HomeView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 enum CapsuleToggle: Int {

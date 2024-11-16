@@ -8,21 +8,35 @@
 import Foundation
 import Alamofire
 
-struct LoginResponse: Codable { // Login이 잘 이루어지면 (200) 받는 정보
+struct LoginResponse: Codable {
+    let isSuccess: Bool
+    let code: String
+    let message: String
+    let result: TokenResult
+}
+
+struct TokenResult: Codable {
     let accessToken: String
     let refreshToken: String
 }
 
-class TokenManager { // 토큰 관리자
+class TokenManager {
     static let shared = TokenManager()
     private init() {}
     
-    // 로그인 이후 토큰을 저장
-    var loginResponse: LoginResponse?
+    var tokenResult: TokenResult?
     
-    func saveTokens(_ response: LoginResponse) {
-        self.loginResponse = response
+    func saveTokens(_ result: TokenResult) {
+        self.tokenResult = result
         // 필요하다면 여기서 KeyChain에 저장할 수 있습니다.
+    }
+    
+    func getAccessToken() -> String? {
+        return tokenResult?.accessToken
+    }
+    
+    func getRefreshToken() -> String? {
+        return tokenResult?.refreshToken
     }
 }
 
@@ -30,11 +44,10 @@ class LoginManager {
     static let shared = LoginManager()
     private init() {}
     
-    func login(email: String, password: String, completion: @escaping (Result<LoginResponse, Error>) -> Void) {
+    func login(email: String, password: String, completion: @escaping (Result<TokenResult, Error>) -> Void) {
         let parameters: [String: Any] = ["email": email, "password": password]
         
         let headers: HTTPHeaders = [
-            "accept": "*/*",
             "Content-Type": "application/json"
         ]
         
@@ -46,9 +59,12 @@ class LoginManager {
             .responseDecodable(of: LoginResponse.self) { response in
                 switch response.result {
                 case .success(let loginResponse):
-                    // 토큰 저장
-                    TokenManager.shared.saveTokens(loginResponse)
-                    completion(.success(loginResponse))
+                    if loginResponse.isSuccess {
+                        completion(.success(loginResponse.result))
+                    } else {
+                        let error = NSError(domain: "", code: Int(loginResponse.code) ?? 0, userInfo: [NSLocalizedDescriptionKey: loginResponse.message])
+                        completion(.failure(error))
+                    }
                 case .failure(let error):
                     completion(.failure(error))
                 }

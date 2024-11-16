@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63409FC32CE8DD15001C1B99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63409FC22CE8DD15001C1B99 /* GoogleService-Info.plist */; };
+		63409FC62CE8DE46001C1B99 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 63409FC52CE8DE46001C1B99 /* FirebaseAnalytics */; };
+		63409FC82CE8DE46001C1B99 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 63409FC72CE8DE46001C1B99 /* FirebaseMessaging */; };
 		63B9E61A2CDDA1D0001B991E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 63B9E6192CDDA1D0001B991E /* SnapKit */; };
 		D6D09B505373C01108CAB999 /* Pods_Communication_Capsule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBDC3080A152C9A5FD66A0AA /* Pods_Communication_Capsule.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5D3E051FA714B4A5CE546A1E /* Pods-Communication_Capsule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Communication_Capsule.debug.xcconfig"; path = "Target Support Files/Pods-Communication_Capsule/Pods-Communication_Capsule.debug.xcconfig"; sourceTree = "<group>"; };
+		63409FC22CE8DD15001C1B99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6371FFC62CDD933C0091F092 /* Communication_Capsule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Communication_Capsule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C0FF857B933ABA5F0F5717 /* Pods-Communication_Capsule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Communication_Capsule.release.xcconfig"; path = "Target Support Files/Pods-Communication_Capsule/Pods-Communication_Capsule.release.xcconfig"; sourceTree = "<group>"; };
 		DBDC3080A152C9A5FD66A0AA /* Pods_Communication_Capsule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Communication_Capsule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,8 +48,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63409FC82CE8DE46001C1B99 /* FirebaseMessaging in Frameworks */,
 				D6D09B505373C01108CAB999 /* Pods_Communication_Capsule.framework in Frameworks */,
 				63B9E61A2CDDA1D0001B991E /* SnapKit in Frameworks */,
+				63409FC62CE8DE46001C1B99 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +65,7 @@
 				6371FFC72CDD933C0091F092 /* Products */,
 				EB73E7B6C2D4A11CBD46AF36 /* Pods */,
 				B72A4A19185982D6F8745FBF /* Frameworks */,
+				63409FC22CE8DD15001C1B99 /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +145,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				63B9E6182CDDA1D0001B991E /* XCRemoteSwiftPackageReference "SnapKit" */,
+				63409FC42CE8DE46001C1B99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6371FFC72CDD933C0091F092 /* Products */;
@@ -154,6 +162,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63409FC32CE8DD15001C1B99 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +227,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Communication_Capsule/Communication_Capsule.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2QJX795Q3R;
@@ -246,6 +256,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Communication_Capsule/Communication_Capsule.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2QJX795Q3R;
@@ -411,6 +422,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		63409FC42CE8DE46001C1B99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.5.0;
+			};
+		};
 		63B9E6182CDDA1D0001B991E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -422,6 +441,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		63409FC52CE8DE46001C1B99 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63409FC42CE8DE46001C1B99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		63409FC72CE8DE46001C1B99 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63409FC42CE8DE46001C1B99 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
 		63B9E6192CDDA1D0001B991E /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 63B9E6182CDDA1D0001B991E /* XCRemoteSwiftPackageReference "SnapKit" */;

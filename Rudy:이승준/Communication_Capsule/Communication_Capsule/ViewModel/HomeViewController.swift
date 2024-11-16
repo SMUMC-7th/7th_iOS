@@ -11,7 +11,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     
     var selectedTag: UIButton?
     var selectedState: UIButton?
-    let accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcHBsZUBnbWFpbC5jb20iLCJyb2xlIjoiIiwiaWF0IjoxNzMxMjI0MjI5LCJleHAiOjE3MzEyMjc4Mjl9.5jgzqVwacArPOWNPqkxNi6MTgEFUHdqce_lo6vAZCUk"
+    var accessToken: String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcHBsZUBnbWFpbC5jb20iLCJyb2xlIjoiIiwiaWF0IjoxNzMxMzA1MDE2LCJleHAiOjE3MzEzMDg2MTZ9.Xr8YFrcQ4GbTjVqMwmK3WRyOsDDf_cmYfZSCZsKxIM0"
     
     private var homeView: HomeView = {
         let view = HomeView()
@@ -24,11 +24,23 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
         homeView.tiemCapsuleCollectionView.delegate = self
         homeView.tiemCapsuleCollectionView.dataSource = self
         self.defineButtonActions()
+        
+//        LoginManager.shared.login(email: "apple@gmail.com", password: "password") { result in
+//            switch result {
+//            case .success(let tokenResult):
+//                TokenManager.shared.saveTokens(tokenResult)
+//                self.accessToken = tokenResult.accessToken
+//            case .failure(let error):
+//                print("로그인 실패: \(error.localizedDescription)")
+//            }
+//        }
+        
         TimeCapsuleService.shared.fetchTimeCapsules(accessToken: accessToken) { result in
             switch result {
             case .success(let timeCapsules):
                 //print("타임캡슐 조회 성공: \(timeCapsules)")
                 TimeCapsuleModel.data = timeCapsules
+                print(timeCapsules)
                 DispatchQueue.main.async {
                     self.homeView.tiemCapsuleCollectionView.reloadData()
                 }
