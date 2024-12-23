@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import UserNotifications
 
 class HomeViewController: UIViewController, UICollectionViewDelegate {
     
     var selectedTag: UIButton?
     var selectedState: UIButton?
-    var accessToken: String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcHBsZUBnbWFpbC5jb20iLCJyb2xlIjoiIiwiaWF0IjoxNzMxMzA1MDE2LCJleHAiOjE3MzEzMDg2MTZ9.Xr8YFrcQ4GbTjVqMwmK3WRyOsDDf_cmYfZSCZsKxIM0"
+    var accessToken: String = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcHBsZUBnbWFpbC5jb20iLCJyb2xlIjoiIiwiaWF0IjoxNzMxOTAzNzk2LCJleHAiOjE3MzQ0OTU3OTZ9.DclXMQo7LGUBXXhmx0TjYnimdRHVQ7mrLwyk3tcees0"
     
     private var homeView: HomeView = {
         let view = HomeView()
@@ -23,6 +24,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
         self.view = homeView
         homeView.tiemCapsuleCollectionView.delegate = self
         homeView.tiemCapsuleCollectionView.dataSource = self
+        
+        
         self.defineButtonActions()
         
 //        LoginManager.shared.login(email: "apple@gmail.com", password: "password") { result in
@@ -34,7 +37,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
 //                print("로그인 실패: \(error.localizedDescription)")
 //            }
 //        }
-        
         TimeCapsuleService.shared.fetchTimeCapsules(accessToken: accessToken) { result in
             switch result {
             case .success(let timeCapsules):
